@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 10%;
+    --foreground: 40 20% 92%;
+
+    --card: 0 0% 15%;
+    --card-foreground: 40 20% 92%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 40 20% 92%;
+
+    --primary: 43 74% 49%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 40 15% 25%;
+    --secondary-foreground: 40 20% 92%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 43 74% 49%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 40 20% 92%;
+
+    --border: 40 15% 25%;
+    --input: 40 15% 25%;
+    --ring: 43 74% 49%;
+
+    --radius: 0.25rem;
+
+    --gold: 43 74% 49%;
+    --gold-light: 43 74% 65%;
+    --gold-dark: 43 74% 35%;
+    
+    --charcoal: 0 0% 15%;
+    --charcoal-light: 0 0% 25%;
+    
+    --gradient-gold: linear-gradient(135deg, hsl(43 74% 49%) 0%, hsl(43 74% 65%) 100%);
+    --gradient-radial: radial-gradient(circle at center, hsl(0 0% 15%) 0%, hsl(0 0% 10%) 100%);
+    
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-gold: 0 10px 40px -10px hsl(43 74% 49% / 0.3);
+    --shadow-elegant: 0 20px 60px -15px hsl(0 0% 0% / 0.5);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Playfair Display', 'Georgia', serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-weight: 700;
+  }
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #d4af37;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #b8941f;
+}
+
+/* Fade animations for hover backgrounds */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s ease-in-out forwards;
+}
