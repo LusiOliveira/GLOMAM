@@ -10,22 +10,22 @@ const Governantes = () => {
 
   const governantes = [
     {
-      id: 3,
-      image: "/images/governantes/(3).png",
-      name: "Governante 3",
-      position: "Cargo do Governante 3",
+      id: 2,
+      image: "/images/governantes/Grao-Mestre.png",
+      name: "Grão-Mestre",
+      position: "Grão-Mestre",
     },
     {
-      id: 2,
-      image: "/images/governantes/(2).png",
-      name: "Governante 2",
-      position: "Cargo do Governante 2",
+      id: 3,
+      image: "/images/governantes/Primeiro Vigilante.png",
+      name: "Primeiro Vigilante",
+      position: "1º Vigilante",
     },
     {
       id: 1,
-      image: "/images/governantes/(1).png",
-      name: "Governante 1",
-      position: "Cargo do Governante 1",
+      image: "/images/governantes/Segundo Vigilante.png",
+      name: "Segundo Vigilante",
+      position: "2º Vigilante",
     },
   ];
 
