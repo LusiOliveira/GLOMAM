@@ -79,12 +79,19 @@ Site institucional da **Grande Loja Maçônica do Amazonas (GLOMAM)**, desenvolv
 ```
 GLOMAM/
 ├── public/                      # Arquivos estáticos públicos
-│   ├── bannerteste.png         # Imagem de fundo do Hero
-│   ├── Favicon.png             # Favicon do site
-│   ├── Hero.png                # Ícone do Hero
-│   ├── Logo.png                # Logo da GLOMAM (usado no header)
-│   ├── footer.png              # Imagem do footer
-│   ├── governantes (1-3).png   # Imagens dos governantes
+│   ├── images/                  # Imagens organizadas por categoria
+│   │   ├── logo/                # Logos e marcas
+│   │   │   ├── Logo.png         # Logo da GLOMAM (usado no header)
+│   │   │   └── footer.png       # Imagem do footer
+│   │   ├── banners/             # Banners e imagens de fundo
+│   │   │   └── bannerteste.png  # Imagem de fundo do Hero
+│   │   ├── icons/               # Ícones e favicons
+│   │   │   ├── Hero.png         # Ícone do Hero
+│   │   │   └── Favicon.png      # Favicon do site
+│   │   └── governantes/         # Fotos dos governantes
+│   │       ├── (1).png
+│   │       ├── (2).png
+│   │       └── (3).png
 │   ├── favicon.ico
 │   ├── placeholder.svg
 │   └── robots.txt
@@ -168,7 +175,7 @@ GLOMAM/
 Barra de navegação fixa no topo da página com as seguintes características:
 
 **Estrutura:**
-- **Logo**: Imagem `Logo.png` (64x64px) com fallback para círculo com letra "G"
+- **Logo**: Imagem `/images/logo/Logo.png` (64x64px) com fallback para círculo com letra "G"
 - **Texto**: "GLOMAM" ao lado da logo (fonte Cinzel Decorative)
 - **Menu centralizado**: HOME, GLOMAM, MAÇONARIA, ADMINISTRAÇÃO, LOJAS, DISPENSÁRIO
 - **Botão INTRANET**: Botão destacado no canto direito (desktop)
@@ -192,8 +199,8 @@ Barra de navegação fixa no topo da página com as seguintes características:
 
 ### Hero.tsx
 Seção hero com:
-- **Imagem de fundo**: `bannerteste.png` com overlay gradiente
-- **Ícone**: `Hero.png` acima do título
+- **Imagem de fundo**: `/images/banners/bannerteste.png` com overlay gradiente
+- **Ícone**: `/images/icons/Hero.png` acima do título
 - **Título principal**: "Grande Loja Maçônica do Amazonas"
   - Fonte: **Cinzel Decorative** (serif decorativa)
   - Tamanho: `text-4xl md:text-6xl`
@@ -589,13 +596,17 @@ location / {
 
 ### Imagens
 
-- **Arquivos públicos**: `public/`
-  - `bannerteste.png` - Imagem de fundo do Hero
-  - `Logo.png` - Logo da GLOMAM (usada no header)
-  - `Hero.png` - Ícone do Hero
-  - `Favicon.png` - Favicon do site
-  - `footer.png` - Imagem do footer
-  - `governantes (1-3).png` - Imagens dos governantes
+- **Arquivos públicos**: `public/images/` (organizados por categoria)
+  - **Logo** (`images/logo/`):
+    - `Logo.png` - Logo da GLOMAM (usada no header)
+    - `footer.png` - Imagem do footer
+  - **Banners** (`images/banners/`):
+    - `bannerteste.png` - Imagem de fundo do Hero
+  - **Ícones** (`images/icons/`):
+    - `Hero.png` - Ícone do Hero
+    - `Favicon.png` - Favicon do site
+  - **Governantes** (`images/governantes/`):
+    - `(1).png`, `(2).png`, `(3).png` - Imagens dos governantes
 - **Assets**: `src/assets/`
   - `masonic-symbols.jpg` - Imagens de símbolos maçônicos
   - `hero-masonic-regalia.jpg` - Imagem alternativa do hero

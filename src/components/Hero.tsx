@@ -16,7 +16,7 @@ const Hero = () => {
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/bannerteste.png)` }}
+          style={{ backgroundImage: `url(/images/banners/bannerteste.png)` }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/90 via-charcoal/80 to-charcoal/95" />
       </div>
@@ -35,7 +35,7 @@ const Hero = () => {
           <div className="inline-block mb-6">
             <div className="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
               <img 
-                src="/Hero.png" 
+                src="/images/icons/Hero.png" 
                 alt="Grande Loja Maçônica" 
                 className="h-full w-full object-contain"
               />

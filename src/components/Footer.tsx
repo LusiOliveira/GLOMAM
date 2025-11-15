@@ -7,7 +7,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-3 mb-4">
               <img 
-                src="/footer.png" 
+                src="/images/logo/footer.png" 
                 alt="GLOMAM Logo" 
                 className="w-auto object-contain transition-transform duration-300 hover:scale-125 cursor-pointer"
                 style={{ height: '50px' }}

@@ -205,7 +205,7 @@ const Navigation = () => {
                 </div>
               ) : (
                 <img 
-                  src="/Logo.png" 
+                  src="/images/logo/Logo.png" 
                   alt="Grande Loja Maçônica" 
                   className="h-full w-full object-contain"
                   onError={() => setLogoError(true)}

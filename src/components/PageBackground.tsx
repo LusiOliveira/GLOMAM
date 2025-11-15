@@ -12,7 +12,7 @@ const PageBackground = ({ children, className = "" }: PageBackgroundProps) => {
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/bannerteste.png)` }}
+          style={{ backgroundImage: `url(/images/banners/bannerteste.png)` }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/90 via-charcoal/80 to-charcoal/95" />
       </div>

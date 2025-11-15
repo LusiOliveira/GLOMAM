@@ -11,19 +11,19 @@ const Governantes = () => {
   const governantes = [
     {
       id: 3,
-      image: "/governantes  (3).png",
+      image: "/images/governantes/(3).png",
       name: "Governante 3",
       position: "Cargo do Governante 3",
     },
     {
       id: 2,
-      image: "/governantes  (2).png",
+      image: "/images/governantes/(2).png",
       name: "Governante 2",
       position: "Cargo do Governante 2",
     },
     {
       id: 1,
-      image: "/governantes  (1).png",
+      image: "/images/governantes/(1).png",
       name: "Governante 1",
       position: "Cargo do Governante 1",
     },
