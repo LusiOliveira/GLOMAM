@@ -1,5 +1,7 @@
 # Documentação do Site - GLOMAM
 
+> 💡 **Início Rápido**: Para uma visão geral rápida do projeto, consulte o [README.md](./README.md)
+
 ## 📋 Índice
 
 1. [Visão Geral](#visão-geral)

@@ -31,10 +31,45 @@ npm run build
 
 ## 🎨 Estrutura do Projeto
 
-- `/src/components` - Componentes React reutilizáveis
-- `/src/pages` - Páginas e rotas
-- `/src/components/ui` - Componentes UI do shadcn
-- `/public` - Arquivos estáticos (imagens, favicon, etc.)
+```
+GLOMAM/
+├── public/
+│   ├── images/              # Imagens organizadas por categoria
+│   │   ├── logo/           # Logos e marcas
+│   │   ├── banners/        # Banners e imagens de fundo
+│   │   ├── icons/          # Ícones e favicons
+│   │   └── governantes/    # Fotos dos governantes
+│   ├── favicon.ico
+│   └── robots.txt
+├── src/
+│   ├── components/         # Componentes React reutilizáveis
+│   │   └── ui/            # Componentes UI do shadcn
+│   ├── pages/             # Páginas e rotas
+│   ├── hooks/             # Custom hooks
+│   └── lib/               # Utilitários
+└── ...
+```
+
+## 📚 Documentação
+
+Para documentação completa e detalhada do projeto, consulte:
+
+**[📖 DOCUMENTACAO.md](./DOCUMENTACAO.md)**
+
+A documentação completa inclui:
+- Guia detalhado de componentes
+- Sistema de rotas completo
+- Sistema de design (cores, tipografia, espaçamento)
+- Guia de deploy
+- Manutenção e desenvolvimento
+- E muito mais!
+
+## 📞 Contato
+
+- **Telefone**: (92) 3622-0034
+- **E-mail**: glomam@glomam.org.br
+- **Endereço**: Av. Prof. Nilton Lins, 1655 - Flores, Manaus - AM, 69058-030
+- **Horário**: Segunda a Sexta, 14h às 20h
 
 ## 📄 Licença
 

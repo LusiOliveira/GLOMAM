@@ -1,8 +1,22 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "glomam-website",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.1.0",
   "type": "module",
+  "description": "Site institucional da Grande Loja Maçônica do Amazonas (GLOMAM)",
+  "author": "Grande Loja Maçônica do Amazonas",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LusiOliveira/GLOMAM.git"
+  },
+  "keywords": [
+    "maçonaria",
+    "glomam",
+    "react",
+    "typescript",
+    "vite"
+  ],
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
