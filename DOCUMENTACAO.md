@@ -1,30 +1,42 @@
-# Documentação do Site - Grande Loja Maçônica
+# Documentação do Site - GLOMAM
 
 ## 📋 Índice
 
 1. [Visão Geral](#visão-geral)
 2. [Tecnologias Utilizadas](#tecnologias-utilizadas)
 3. [Estrutura do Projeto](#estrutura-do-projeto)
-4. [Componentes](#componentes)
-5. [Configuração e Instalação](#configuração-e-instalação)
-6. [Scripts Disponíveis](#scripts-disponíveis)
-7. [Estrutura de Cores](#estrutura-de-cores)
-8. [Funcionalidades](#funcionalidades)
-9. [Deploy](#deploy)
+4. [Componentes Principais](#componentes-principais)
+5. [Sistema de Rotas](#sistema-de-rotas)
+6. [Configuração e Instalação](#configuração-e-instalação)
+7. [Scripts Disponíveis](#scripts-disponíveis)
+8. [Sistema de Design](#sistema-de-design)
+9. [Funcionalidades](#funcionalidades)
+10. [Deploy](#deploy)
+11. [Manutenção e Desenvolvimento](#manutenção-e-desenvolvimento)
 
 ---
 
 ## 🎯 Visão Geral
 
-Site institucional da Grande Loja Maçônica do Amazonas (GLOMAM), desenvolvido com React, TypeScript e Vite. O site apresenta informações sobre a instituição, sua história, administração, lojas filiadas e oferece um canal de contato para interessados.
+Site institucional da **Grande Loja Maçônica do Amazonas (GLOMAM)**, desenvolvido com React, TypeScript e Vite. O site apresenta informações sobre a instituição, sua história, administração, lojas filiadas e oferece um canal de contato para interessados.
 
 ### Características Principais
 
-- Design elegante e moderno com tema escuro e detalhes dourados
-- Totalmente responsivo (mobile-first)
-- Navegação suave entre seções
-- Animações e transições suaves
-- SEO otimizado com meta tags apropriadas
+- ✅ Design elegante e moderno com tema escuro e detalhes dourados
+- ✅ Totalmente responsivo (mobile-first)
+- ✅ Navegação suave entre seções com sistema de rotas
+- ✅ Animações e transições suaves
+- ✅ SEO otimizado com meta tags apropriadas
+- ✅ Sistema de dropdowns hover inteligente
+- ✅ Menu mobile com hambúrguer
+- ✅ Header translúcido ao rolar a página
+
+### Informações de Contato
+
+- **Telefone**: (92) 3622-0034
+- **E-mail**: glomam@glomam.org.br
+- **Endereço**: Av. Prof. Nilton Lins, 1655 - Flores, Manaus - AM, 69058-030
+- **Horário**: Segunda a Sexta, 14h às 20h
 
 ---
 
@@ -39,102 +51,137 @@ Site institucional da Grande Loja Maçônica do Amazonas (GLOMAM), desenvolvido 
 - **Tailwind CSS 3.4.17** - Framework CSS utility-first
 - **shadcn/ui** - Componentes UI reutilizáveis baseados em Radix UI
 - **Radix UI** - Componentes primitivos acessíveis
-- **Lucide React** - Biblioteca de ícones
-- **Playfair Display** - Fonte Google Fonts (serif elegante) - Corpo do texto
-- **Lato** - Fonte Google Fonts (sans-serif) - Header e textos específicos
-- **Cinzel Decorative** - Fonte Google Fonts (serif decorativa) - Título do Hero
+- **Lucide React 0.462.0** - Biblioteca de ícones moderna
+- **tailwindcss-animate 1.0.7** - Animações para Tailwind
+
+### Fontes Google Fonts
+- **Playfair Display** - Fonte serif elegante (corpo do texto e títulos)
+- **Lato** - Fonte sans-serif (header e textos específicos)
+- **Cinzel Decorative** - Fonte serif decorativa (título principal do Hero)
 
 ### Funcionalidades
-- **React Router DOM 6.30.1** - Roteamento de páginas
+- **React Router DOM 6.30.1** - Roteamento de páginas SPA
 - **TanStack React Query 5.83.0** - Gerenciamento de estado e cache
 - **React Hook Form 7.61.1** - Gerenciamento de formulários
-- **Zod 3.25.76** - Validação de schemas
+- **Zod 3.25.76** - Validação de schemas TypeScript-first
 
 ### Ferramentas de Desenvolvimento
 - **ESLint 9.32.0** - Linter para JavaScript/TypeScript
-- **TypeScript ESLint** - Linter específico para TypeScript
-- **PostCSS** - Processador CSS
-- **Autoprefixer** - Adiciona prefixos CSS automaticamente
+- **TypeScript ESLint 8.38.0** - Linter específico para TypeScript
+- **PostCSS 8.5.6** - Processador CSS
+- **Autoprefixer 10.4.21** - Adiciona prefixos CSS automaticamente
+- **@vitejs/plugin-react-swc 3.11.0** - Plugin React com SWC para compilação rápida
 
 ---
 
 ## 📁 Estrutura do Projeto
 
 ```
-lodge-crafted-site-main/
-├── public/                 # Arquivos estáticos públicos
-│   ├── bannerteste.png    # Imagem de fundo do Hero
-│   ├── Favicon.png        # Favicon do site
-│   ├── Hero.png           # Ícone do Hero
-│   ├── Logo.png           # Logo da GLOMAM
+GLOMAM/
+├── public/                      # Arquivos estáticos públicos
+│   ├── bannerteste.png         # Imagem de fundo do Hero
+│   ├── Favicon.png             # Favicon do site
+│   ├── Hero.png                # Ícone do Hero
+│   ├── Logo.png                # Logo da GLOMAM (usado no header)
+│   ├── footer.png              # Imagem do footer
+│   ├── governantes (1-3).png   # Imagens dos governantes
 │   ├── favicon.ico
 │   ├── placeholder.svg
 │   └── robots.txt
 ├── src/
-│   ├── assets/            # Imagens e recursos
+│   ├── assets/                 # Imagens e recursos
+│   │   ├── hero-masonic-regalia.jpg
 │   │   └── masonic-symbols.jpg
-│   ├── components/        # Componentes React
-│   │   ├── ui/            # Componentes UI reutilizáveis (shadcn)
-│   │   ├── Navigation.tsx  # Barra de navegação superior com dropdowns
-│   │   ├── Hero.tsx       # Seção hero/banner principal
-│   │   ├── Contact.tsx    # Seção de contato
-│   │   └── Footer.tsx     # Rodapé do site
-│   ├── hooks/             # Custom hooks React
-│   ├── lib/               # Utilitários e helpers
-│   ├── pages/             # Páginas da aplicação
-│   │   ├── Index.tsx      # Página principal (Hero + Contact + Footer)
-│   │   ├── NotFound.tsx   # Página 404
-│   │   ├── Glomam/        # Páginas da seção GLOMAM
+│   ├── components/             # Componentes React
+│   │   ├── ui/                 # Componentes UI reutilizáveis (shadcn)
+│   │   │   ├── accordion.tsx
+│   │   │   ├── button.tsx
+│   │   │   ├── input.tsx
+│   │   │   ├── tabs.tsx
+│   │   │   └── ... (outros componentes shadcn)
+│   │   ├── Navigation.tsx      # Barra de navegação superior
+│   │   ├── Hero.tsx            # Seção hero/banner principal
+│   │   ├── Maconaria.tsx       # Componente da seção Maçonaria
+│   │   ├── Glomam.tsx          # Componente da seção GLOMAM
+│   │   ├── Administracao.tsx   # Componente da seção Administração
+│   │   ├── Lojas.tsx           # Componente da seção Lojas
+│   │   ├── Dispensario.tsx     # Componente do Dispensário
+│   │   ├── Contact.tsx         # Seção de contato
+│   │   ├── Footer.tsx          # Rodapé do site
+│   │   ├── NavLink.tsx         # Componente de link de navegação
+│   │   └── PageBackground.tsx  # Componente de fundo de página
+│   ├── hooks/                  # Custom hooks React
+│   │   ├── use-mobile.tsx      # Hook para detectar mobile
+│   │   └── use-toast.ts        # Hook para toasts
+│   ├── lib/                    # Utilitários e helpers
+│   │   └── utils.ts            # Funções utilitárias (cn, etc)
+│   ├── pages/                  # Páginas da aplicação
+│   │   ├── Index.tsx           # Página principal
+│   │   ├── NotFound.tsx        # Página 404
+│   │   ├── Glomam/             # Páginas da seção GLOMAM
 │   │   │   ├── NossaHistoria.tsx
 │   │   │   ├── Paramaconicos.tsx
 │   │   │   ├── Agenda.tsx
 │   │   │   └── QueroSerUmMacom.tsx
-│   │   ├── Maconaria/     # Páginas da seção MAÇONARIA
-│   │   │   ├── OQueE.tsx  # Com scroll vertical e fonte Lato
+│   │   ├── Maconaria/          # Páginas da seção MAÇONARIA
+│   │   │   ├── OQueE.tsx
 │   │   │   ├── Principios.tsx
 │   │   │   ├── Objetivos.tsx
 │   │   │   ├── PerguntasRespostas.tsx
 │   │   │   └── GrandesLojas.tsx
-│   │   ├── Administracao/  # Páginas da seção ADMINISTRAÇÃO
+│   │   ├── Administracao/       # Páginas da seção ADMINISTRAÇÃO
 │   │   │   ├── Governantes.tsx
 │   │   │   ├── Executivo.tsx
 │   │   │   ├── Legislativo.tsx
 │   │   │   ├── Judiciario.tsx
 │   │   │   └── GrandesComissoes.tsx
-│   │   ├── Lojas/         # Páginas da seção LOJAS
-│   │   │   └── index.tsx  # Busca e filtros de lojas
-│   │   └── Dispensario/   # Páginas do DISPENSÁRIO
+│   │   ├── Lojas/               # Páginas da seção LOJAS
+│   │   │   └── index.tsx        # Busca e filtros de lojas
+│   │   └── Dispensario/         # Páginas do DISPENSÁRIO
 │   │       └── QuemSomos.tsx
-│   ├── App.tsx            # Componente raiz com rotas
-│   ├── main.tsx           # Ponto de entrada da aplicação
-│   ├── index.css          # Estilos globais, variáveis CSS e scrollbar customizada
-│   └── vite-env.d.ts      # Tipos do Vite
-├── index.html             # HTML principal
-├── package.json           # Dependências e scripts
-├── tsconfig.json          # Configuração TypeScript
-├── vite.config.ts         # Configuração do Vite (porta 8080)
-├── tailwind.config.ts     # Configuração do Tailwind
-├── postcss.config.js      # Configuração do PostCSS
-└── eslint.config.js       # Configuração do ESLint
+│   ├── App.tsx                  # Componente raiz com rotas
+│   ├── App.css                  # Estilos específicos do App
+│   ├── main.tsx                 # Ponto de entrada da aplicação
+│   ├── index.css                # Estilos globais, variáveis CSS
+│   └── vite-env.d.ts            # Tipos do Vite
+├── index.html                   # HTML principal
+├── package.json                 # Dependências e scripts
+├── package-lock.json            # Lock file do npm
+├── bun.lockb                    # Lock file do Bun (alternativo)
+├── tsconfig.json                # Configuração TypeScript
+├── tsconfig.app.json            # Config TypeScript para app
+├── tsconfig.node.json           # Config TypeScript para node
+├── vite.config.ts               # Configuração do Vite
+├── tailwind.config.ts           # Configuração do Tailwind
+├── postcss.config.js            # Configuração do PostCSS
+├── eslint.config.js             # Configuração do ESLint
+├── components.json              # Configuração do shadcn/ui
+├── README.md                    # Documentação principal
+└── DOCUMENTACAO.md              # Esta documentação
 ```
 
 ---
 
-## 🧩 Componentes
+## 🧩 Componentes Principais
 
 ### Navigation.tsx
-Barra de navegação fixa no topo da página com:
-- **Logo**: Imagem `Logo.png` (64x64px) substituindo o círculo com letra "G"
-- **Texto**: "GLOMAM" ao lado da logo
+Barra de navegação fixa no topo da página com as seguintes características:
+
+**Estrutura:**
+- **Logo**: Imagem `Logo.png` (64x64px) com fallback para círculo com letra "G"
+- **Texto**: "GLOMAM" ao lado da logo (fonte Cinzel Decorative)
 - **Menu centralizado**: HOME, GLOMAM, MAÇONARIA, ADMINISTRAÇÃO, LOJAS, DISPENSÁRIO
+- **Botão INTRANET**: Botão destacado no canto direito (desktop)
+- **Menu hambúrguer**: Para dispositivos móveis
+
+**Funcionalidades:**
 - **Dropdowns hover**: Cada seção principal exibe subseções ao passar o mouse
   - Delay de 200ms antes de fechar para melhor usabilidade
+  - Animações de fade-in/fade-out suaves (400ms/500ms)
   - Background dos dropdowns: `#161d34` (azul escuro)
-- **Botão INTRANET**: Substituiu "Portal do Membro" (fonte `text-sm`)
-- **Menu hambúrguer**: Para dispositivos móveis
-- **Cor de fundo**: `#123b61` (azul escuro)
 - **Transparência ao rolar**: Header fica 85% opaco quando scroll > 50px
 - **Fonte**: Lato (aplicada apenas no header)
+- **Prevenção de scroll**: Body não rola quando menu mobile está aberto
 
 **Subseções disponíveis:**
 - **GLOMAM**: Nossa História, Paramaçônicos, Agenda do Grão Mestre, Quero Ser um Maçom
@@ -145,18 +192,51 @@ Barra de navegação fixa no topo da página com:
 
 ### Hero.tsx
 Seção hero com:
-- **Imagem de fundo**: `bannerteste.png` (substituiu hero-masonic-regalia.jpg)
+- **Imagem de fundo**: `bannerteste.png` com overlay gradiente
 - **Ícone**: `Hero.png` acima do título
 - **Título principal**: "Grande Loja Maçônica do Amazonas"
   - Fonte: **Cinzel Decorative** (serif decorativa)
   - Tamanho: `text-4xl md:text-6xl`
-- **Descrição**: Texto placeholder com princípios destacados
-- **Botões de ação**: Conheça a GLOMAM, Entre em Contato
+- **Descrição**: Texto com princípios destacados em dourado
+- **Botões de ação**: 
+  - "Conheça a GLOMAM" (link para `/glomam/nossa-historia`)
+  - "Entre em Contato" (scroll para seção #contato)
 - **Indicador de scroll**: Animado na parte inferior
+- **Elementos decorativos**: Quadrados rotacionados nos cantos (desktop)
 
-### Páginas Individuais
+### Maconaria.tsx
+Componente principal da seção Maçonaria com sistema de tabs:
+- **Tabs**: O Que É, Princípios, Objetivos, Perguntas e Respostas, Grandes Lojas
+- **Princípios**: Cards com ícones (Fraternidade, Liberdade, Igualdade)
+- **Valores Fundamentais**: Tolerância, Beneficência, Justiça, Progresso
+- **FAQs**: Accordion com perguntas frequentes
+- **Grandes Lojas**: Lista de Grandes Lojas do Brasil
 
-O site utiliza um sistema de rotas onde cada subseção tem sua própria página:
+### Contact.tsx
+Seção de contato com:
+- **Informações de contato**: Telefone, e-mail, endereço
+- **Horário de atendimento**: Segunda a Sexta, 14h às 20h
+- **Formulário de contato**: Nome, e-mail, mensagem
+- **Google Maps**: Iframe integrado com localização da GLOMAM
+- **Fonte**: Merriweather para informações de contato
+
+### Footer.tsx
+Rodapé com:
+- Logo e descrição
+- Links rápidos organizados por seção
+- Informações de contato
+- Copyright e informações legais
+
+---
+
+## 🗺️ Sistema de Rotas
+
+O site utiliza **React Router DOM** para navegação SPA. Todas as rotas estão definidas em `src/App.tsx`:
+
+### Rotas Principais
+
+**Home:**
+- `/` - Página inicial (Index.tsx)
 
 **GLOMAM** (`/glomam/`):
 - `/glomam/nossa-historia` - NossaHistoria.tsx
@@ -165,7 +245,7 @@ O site utiliza um sistema de rotas onde cada subseção tem sua própria página
 - `/glomam/quero-ser-um-macom` - QueroSerUmMacom.tsx
 
 **MAÇONARIA** (`/maconaria/`):
-- `/maconaria/o-que-e` - OQueE.tsx (com scroll vertical e fonte Lato)
+- `/maconaria/o-que-e` - OQueE.tsx
 - `/maconaria/principios` - Principios.tsx
 - `/maconaria/objetivos` - Objetivos.tsx
 - `/maconaria/perguntas-respostas` - PerguntasRespostas.tsx
@@ -178,24 +258,14 @@ O site utiliza um sistema de rotas onde cada subseção tem sua própria página
 - `/administracao/judiciario` - Judiciario.tsx
 - `/administracao/grandes-comissoes` - GrandesComissoes.tsx
 
-**LOJAS**:
-- `/lojas` - Lojas/index.tsx (com busca e filtros por estado e loja)
+**LOJAS:**
+- `/lojas` - Lojas/index.tsx (com busca e filtros)
 
-**DISPENSÁRIO**:
+**DISPENSÁRIO:**
 - `/dispensario/quem-somos` - QuemSomos.tsx
 
-### Contact.tsx
-Seção de contato com:
-- Formulário de contato
-- Informações de contato (telefone, email, endereço)
-- Horário de atendimento
-
-### Footer.tsx
-Rodapé com:
-- Logo e descrição
-- Links rápidos
-- Informações de contato
-- Copyright
+**404:**
+- `*` - NotFound.tsx (qualquer rota não encontrada)
 
 ---
 
@@ -203,20 +273,24 @@ Rodapé com:
 
 ### Pré-requisitos
 
-- Node.js (versão 18 ou superior recomendada)
-- npm ou yarn ou bun
+- **Node.js** (versão 18 ou superior recomendada)
+- **npm**, **yarn** ou **bun** (gerenciador de pacotes)
 
 ### Passos para Instalação
 
-1. **Clone o repositório** (se aplicável)
+1. **Clone o repositório**
    ```bash
-   git clone <URL_DO_REPOSITORIO>
-   cd lodge-crafted-site-main
+   git clone https://github.com/LusiOliveira/GLOMAM.git
+   cd GLOMAM
    ```
 
 2. **Instale as dependências**
    ```bash
    npm install
+   # ou
+   yarn install
+   # ou
+   bun install
    ```
 
 3. **Inicie o servidor de desenvolvimento**
@@ -228,6 +302,15 @@ Rodapé com:
    - Abra seu navegador em `http://localhost:8080`
    - A porta padrão está configurada no `vite.config.ts`
 
+### Configuração do Ambiente
+
+Atualmente não há variáveis de ambiente configuradas. Se necessário, crie um arquivo `.env` na raiz do projeto:
+
+```env
+VITE_API_URL=https://api.exemplo.com
+VITE_APP_NAME=GLOMAM
+```
+
 ---
 
 ## 📜 Scripts Disponíveis
@@ -236,84 +319,159 @@ Rodapé com:
 Inicia o servidor de desenvolvimento Vite com hot-reload.
 - **Porta**: 8080 (configurada em `vite.config.ts`)
 - **Host**: `::` (aceita conexões de qualquer interface)
+- **Hot Module Replacement (HMR)**: Ativado
 
 ### `npm run build`
 Cria uma build de produção otimizada na pasta `dist/`.
+- Minificação automática
+- Tree-shaking
+- Code splitting
+- Otimização de assets
 
 ### `npm run build:dev`
-Cria uma build em modo desenvolvimento.
+Cria uma build em modo desenvolvimento (sem minificação).
 
 ### `npm run preview`
 Visualiza a build de produção localmente.
+- Útil para testar a build antes do deploy
 
 ### `npm run lint`
 Executa o ESLint para verificar erros e warnings no código.
+- Configurado com regras do TypeScript ESLint
+- Verifica padrões de código e possíveis bugs
 
 ---
 
-## 🎨 Estrutura de Cores
-
-O site utiliza um sistema de cores baseado em HSL definido em `src/index.css`:
+## 🎨 Sistema de Design
 
 ### Cores Principais
 
+O site utiliza um sistema de cores baseado em HSL definido em `src/index.css`:
+
+#### Cores Customizadas
+
 - **Charcoal (Fundo escuro)**
-  - `--charcoal`: `0 0% 15%` (HSL)
-  - `--charcoal-light`: `0 0% 25%` (HSL)
+  - `--charcoal`: `0 0% 15%` (HSL) - `#262626`
+  - `--charcoal-light`: `0 0% 25%` (HSL) - `#404040`
 
 - **Gold (Dourado - Cor de destaque)**
-  - `--gold`: `43 74% 49%` (HSL)
-  - `--gold-light`: `43 74% 65%` (HSL)
-  - `--gold-dark`: `43 74% 35%` (HSL)
+  - `--gold`: `43 74% 49%` (HSL) - `#D4AF37`
+  - `--gold-light`: `43 74% 65%` (HSL) - `#E5C866`
+  - `--gold-dark`: `43 74% 35%` (HSL) - `#A68B2A`
 
-- **Header Background**
-  - Cor padrão: `#123b61` (azul escuro)
-  - Cor ao rolar: `rgba(18, 59, 97, 0.85)` (85% opacidade)
-  - Background dos dropdowns: `#161d34` (azul escuro)
+#### Cores do Sistema (shadcn/ui)
 
-### Cores do Sistema (shadcn/ui)
+- **Background**: `0 0% 10%` - Fundo principal
+- **Foreground**: `40 20% 92%` - Texto principal
+- **Primary**: `43 74% 49%` - Cor primária (dourado)
+- **Secondary**: `40 15% 25%` - Cor secundária
+- **Muted**: `0 0% 20%` - Elementos muted
+- **Accent**: `43 74% 49%` - Cor de destaque
+- **Border**: `40 15% 25%` - Bordas
 
-- Background, Foreground, Primary, Secondary, Muted, Accent, etc.
-- Todas definidas em HSL para melhor controle de temas
+#### Cores Específicas de Componentes
+
+- **Header Background**: `#123b61` (azul escuro)
+- **Header Background (scrolled)**: `rgba(18, 59, 97, 0.85)` (85% opacidade)
+- **Dropdown Background**: `#161d34` (azul escuro)
+- **Contact Section Background**: `#161d34` (azul escuro)
+
+### Tipografia
+
+#### Fontes
+
+- **Playfair Display**: Fonte principal aplicada em títulos e corpo do texto
+- **Lato**: Aplicada no header (Navigation) e em textos específicos
+- **Cinzel Decorative**: Aplicada apenas no título principal do Hero
+- **Merriweather**: Aplicada na seção de contato
+
+#### Tamanhos
+
+- Títulos Hero: `text-4xl md:text-6xl`
+- Títulos de seção: `text-4xl md:text-5xl`
+- Subtítulos: `text-2xl md:text-3xl`
+- Corpo: `text-base` (16px)
+- Pequeno: `text-sm` (14px)
+
+### Espaçamento
+
+O projeto utiliza o sistema de espaçamento do Tailwind:
+- Padding padrão: `px-4` (mobile), `container mx-auto` (desktop)
+- Seções: `py-24` (vertical padding)
+- Gaps: `gap-4`, `gap-6`, `gap-8`, `gap-12`
+
+### Sombras e Efeitos
+
+- `shadow-gold`: Sombra dourada para elementos destacados
+- `shadow-elegant`: Sombra elegante para cards
+- `hover:shadow-[0_0_20px_rgba(212,175,55,0.6)]`: Efeito glow dourado no hover
+
+### Animações
+
+- **Transições**: `transition-all duration-300`
+- **Hover scale**: `hover:scale-105`
+- **Fade in/out**: Animações customizadas para dropdowns
+- **Bounce**: Indicador de scroll
 
 ---
 
 ## ✨ Funcionalidades
 
 ### Navegação
-- Menu fixo no topo que permanece visível durante o scroll
+
+- **Menu fixo**: Permanece visível durante o scroll
 - **Sistema de rotas**: Cada subseção tem sua própria página/rota
-- **Dropdowns hover**: Subseções aparecem ao passar o mouse sobre as seções principais
-  - Delay de 200ms antes de fechar para melhor usabilidade
+- **Dropdowns hover**: Subseções aparecem ao passar o mouse
+  - Delay de 200ms antes de fechar
+  - Animações suaves de fade-in/fade-out
   - Menu centralizado no desktop
-- Menu responsivo com hambúrguer para mobile
-- Navegação suave entre páginas usando React Router
+- **Menu responsivo**: Hambúrguer para mobile
+- **Navegação suave**: Scroll suave entre seções
+- **Active states**: Links ativos destacados em dourado
 
 ### Animações
-- Transições suaves em hover
-- Animações de entrada (fade-in, slide-up)
-- Efeitos de hover em botões e links
-- Indicador de scroll animado
+
+- **Transições suaves**: Em hover, focus e active states
+- **Animações de entrada**: Fade-in e slide-up em elementos
+- **Efeitos de hover**: Scale, glow, shadow em botões e links
+- **Indicador de scroll**: Animação bounce
+- **Loading states**: Para formulários e ações
 
 ### Responsividade
-- Design mobile-first
-- Breakpoints do Tailwind:
+
+- **Design mobile-first**: Otimizado para mobile primeiro
+- **Breakpoints do Tailwind**:
   - `sm`: 640px
   - `md`: 768px
   - `lg`: 1024px
   - `xl`: 1280px
   - `2xl`: 1400px
+- **Menu mobile**: Hambúrguer com overlay
+- **Grid responsivo**: Adapta-se a diferentes tamanhos de tela
 
 ### SEO
-- Meta tags otimizadas no `index.html`
-- Open Graph tags para redes sociais
-- Twitter Card tags
-- Descrição e keywords apropriadas
+
+- **Meta tags**: Otimizadas no `index.html`
+- **Open Graph**: Tags para compartilhamento em redes sociais
+- **Twitter Card**: Tags para Twitter
+- **Descrição e keywords**: Apropriadas para o contexto maçônico
+- **Títulos semânticos**: H1, H2, H3 hierarquicamente corretos
 
 ### Acessibilidade
-- Componentes Radix UI com suporte a acessibilidade
-- Navegação por teclado
-- Contraste adequado de cores
+
+- **Componentes Radix UI**: Com suporte nativo a acessibilidade
+- **Navegação por teclado**: Tab, Enter, Esc funcionam corretamente
+- **Contraste adequado**: Cores com contraste WCAG AA
+- **ARIA labels**: Onde necessário
+- **Focus states**: Visíveis e destacados
+
+### Performance
+
+- **Vite**: Build tool rápido com HMR
+- **Code splitting**: Automático com React Router
+- **Lazy loading**: Componentes carregados sob demanda
+- **Otimização de imagens**: Recomendado antes do deploy
+- **Tree shaking**: Remove código não utilizado
 
 ---
 
@@ -327,77 +485,189 @@ O site utiliza um sistema de cores baseado em HSL definido em `src/index.css`:
    ```
 
 2. **A pasta `dist/` conterá os arquivos otimizados**
+   - HTML, CSS, JS minificados
+   - Assets otimizados
+   - Source maps (opcional)
 
 ### Opções de Deploy
 
-- **Vercel**: Conecte o repositório e faça deploy automático
-- **Netlify**: Arraste a pasta `dist/` ou conecte o repositório
-- **GitHub Pages**: Configure para servir a pasta `dist/`
-- **Servidor próprio**: Faça upload dos arquivos da pasta `dist/`
+#### Vercel (Recomendado)
+1. Conecte o repositório GitHub
+2. Configure o build command: `npm run build`
+3. Configure o output directory: `dist`
+4. Deploy automático a cada push
 
-### Variáveis de Ambiente
+#### Netlify
+1. Arraste a pasta `dist/` ou conecte o repositório
+2. Configure:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+3. Deploy automático configurável
 
-Atualmente não há variáveis de ambiente configuradas. Se necessário, crie um arquivo `.env` na raiz do projeto.
+#### GitHub Pages
+1. Configure o workflow do GitHub Actions
+2. Build e deploy automático na branch `main`
+3. Acesse via `https://username.github.io/GLOMAM`
+
+#### Servidor Próprio
+1. Faça upload dos arquivos da pasta `dist/`
+2. Configure o servidor web (Nginx, Apache, etc.)
+3. Configure SPA routing (redirect todas as rotas para `index.html`)
+
+### Configuração de SPA Routing
+
+Para servidores que não suportam SPA routing nativamente, configure redirects:
+
+**Nginx:**
+```nginx
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
+
+**Apache (.htaccess):**
+```apache
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+```
+
+---
+
+## 🔧 Manutenção e Desenvolvimento
+
+### Estrutura de Código
+
+- **Componentes**: Organizados por funcionalidade
+- **Páginas**: Uma página por rota
+- **UI Components**: Reutilizáveis em `components/ui/`
+- **Hooks**: Custom hooks em `hooks/`
+- **Utils**: Funções utilitárias em `lib/`
+
+### Convenções
+
+- **Nomenclatura**: PascalCase para componentes, camelCase para funções
+- **Imports**: Organizados por tipo (React, libs, componentes, utils)
+- **TypeScript**: Tipagem forte, evite `any`
+- **CSS**: Tailwind classes preferidas, CSS customizado apenas quando necessário
+
+### Adicionar Nova Página
+
+1. Criar componente em `src/pages/`
+2. Adicionar rota em `src/App.tsx`
+3. Adicionar link na navegação (`Navigation.tsx`)
+4. Atualizar documentação se necessário
+
+### Adicionar Novo Componente UI
+
+1. Usar shadcn CLI: `npx shadcn-ui@latest add [component]`
+2. Ou criar manualmente em `src/components/ui/`
+3. Seguir padrão dos componentes existentes
+
+### Debugging
+
+- **React DevTools**: Extensão do navegador
+- **Vite DevTools**: Console do Vite no terminal
+- **TypeScript**: Verificar erros com `npm run lint`
+- **Console**: Logs no console do navegador
+
+### Performance
+
+- **Lighthouse**: Teste de performance regularmente
+- **Bundle size**: Monitorar tamanho do bundle
+- **Images**: Otimizar imagens antes de adicionar
+- **Lazy loading**: Implementar para componentes pesados
 
 ---
 
 ## 📝 Notas Adicionais
 
-### Fontes
-- **Playfair Display**: Fonte principal aplicada em títulos e corpo do texto
-- **Lato**: Aplicada no header (Navigation) e em textos específicos (ex: página "O que é")
-- **Cinzel Decorative**: Aplicada apenas no título principal do Hero
-
 ### Imagens
+
 - **Arquivos públicos**: `public/`
   - `bannerteste.png` - Imagem de fundo do Hero
   - `Logo.png` - Logo da GLOMAM (usada no header)
   - `Hero.png` - Ícone do Hero
   - `Favicon.png` - Favicon do site
+  - `footer.png` - Imagem do footer
+  - `governantes (1-3).png` - Imagens dos governantes
 - **Assets**: `src/assets/`
   - `masonic-symbols.jpg` - Imagens de símbolos maçônicos
-- Formatos suportados: JPG, PNG, SVG
-- Otimização recomendada antes do deploy
+  - `hero-masonic-regalia.jpg` - Imagem alternativa do hero
+- **Formatos suportados**: JPG, PNG, SVG
+- **Otimização**: Recomendado usar ferramentas como ImageOptim ou Squoosh antes do deploy
 
-### Performance
-- Vite oferece otimizações automáticas
-- Code splitting automático
-- Lazy loading de componentes (se implementado)
+### Scrollbar Customizada
 
-### Manutenção
-- Código organizado em componentes reutilizáveis
-- TypeScript para type safety
-- ESLint para manter qualidade do código
-- Sistema de rotas centralizado em `App.tsx`
-- Páginas individuais para cada subseção facilitam manutenção
+A página "O que é" possui scrollbar dourada personalizada:
+```css
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #d4af37;
+}
+```
 
 ### Funcionalidades Especiais
-- **Scroll vertical customizado**: Página "O que é" possui scrollbar dourada personalizada
+
 - **Header translúcido**: Efeito de transparência ao rolar a página
 - **Dropdowns inteligentes**: Sistema de hover com delay para melhor UX
+- **Prevenção de scroll**: Body não rola quando menu mobile está aberto
+- **Google Maps**: Integrado na seção de contato
+
+### Dependências Principais
+
+- **React Router**: Navegação SPA
+- **TanStack Query**: Gerenciamento de estado (preparado para futuras APIs)
+- **React Hook Form**: Formulários (preparado para validação)
+- **Zod**: Validação de schemas (preparado para formulários)
 
 ---
 
-## 📞 Suporte
+## 📞 Suporte e Contato
 
-Para dúvidas ou problemas:
-- Email: contato@grandeloja.org.br
-- Telefone: (92) 3622-0034
+Para dúvidas sobre o desenvolvimento ou manutenção do site:
+
+- **Repositório**: https://github.com/LusiOliveira/GLOMAM
+- **Issues**: Use o sistema de issues do GitHub para reportar bugs ou sugerir melhorias
 
 ---
 
-**Última atualização**: Dezembro 2024
-**Versão**: 1.1.0
+## 📅 Changelog
 
-### Changelog v1.1.0
+### Versão 1.1.0 (Dezembro 2024)
+
+**Adições:**
 - ✅ Sistema de navegação com dropdowns hover
 - ✅ Páginas individuais para cada subseção
 - ✅ Logo e favicon atualizados
 - ✅ Imagem de fundo do Hero substituída
-- ✅ Fontes personalizadas (Lato, Cinzel Decorative)
+- ✅ Fontes personalizadas (Lato, Cinzel Decorative, Merriweather)
 - ✅ Header com transparência ao rolar
 - ✅ Scroll vertical customizado na página "O que é"
 - ✅ Menu centralizado
 - ✅ Botão INTRANET no lugar de "Portal do Membro"
-- ✅ Remoção de subseções desabilitadas (BRASÃO, GRÃO-MESTRES, FUNDAÇÃO GLOMAM)
+- ✅ Google Maps integrado na seção de contato
+- ✅ Sistema de rotas completo com React Router
+- ✅ Componente Maconaria com sistema de tabs
+- ✅ Seção de contato completa com formulário
 
+**Melhorias:**
+- ⚡ Performance otimizada
+- 🎨 Design refinado
+- 📱 Responsividade aprimorada
+- ♿ Acessibilidade melhorada
+
+**Correções:**
+- 🐛 Menu mobile com prevenção de scroll
+- 🐛 Dropdowns com animações suaves
+- 🐛 Links ativos destacados corretamente
+
+---
+
+**Última atualização**: Dezembro 2024  
+**Versão**: 1.1.0  
+**Mantenedor**: Grande Loja Maçônica do Amazonas (GLOMAM)
