@@ -27,11 +27,23 @@ const Executivo = () => {
     { id: 13, image: "/images/executivos/Executivo 13.png", name: "Executivo 13" },
     { id: 14, image: "/images/executivos/Executivo 14.png", name: "Executivo 14" },
     { id: 15, image: "/images/executivos/Executivo 15.png", name: "Executivo 15" },
+    { id: 16, image: "/images/executivos/Executivo 16.png", name: "Executivo 16" },
+    { id: 17, image: "/images/executivos/Executivo 17.png", name: "Executivo 17" },
+    { id: 18, image: "/images/executivos/Executivo 18.png", name: "Executivo 18" },
+    { id: 21, image: "/images/executivos/Executivo 21.png", name: "Executivo 21" },
+    { id: 23, image: "/images/executivos/Executivo 23.png", name: "Executivo 23" },
+    { id: 24, image: "/images/executivos/Executivo 24.png", name: "Executivo 24" },
+    { id: 25, image: "/images/executivos/Executivo 25.png", name: "Executivo 25" },
+    { id: 26, image: "/images/executivos/Executivo 26.png", name: "Executivo 26" },
+    { id: 27, image: "/images/executivos/Executivo 27.png", name: "Executivo 27" },
+    { id: 28, image: "/images/executivos/Executivo 28.png", name: "Executivo 28" },
+    { id: 29, image: "/images/executivos/Executivo 29.png", name: "Executivo 29" },
+    { id: 30, image: "/images/executivos/Executivo 30.png", name: "Executivo 30" },
   ];
 
   useEffect(() => {
     setIsTitleVisible(true);
-    setDynamicScales(new Array(15).fill(1.05));
+    setDynamicScales(new Array(26).fill(1.05));
   }, []);
 
   useEffect(() => {
@@ -115,7 +127,7 @@ const Executivo = () => {
       <Navigation />
       <section className="pt-24 pb-24 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-10">
             <h1 
               className="text-4xl md:text-5xl font-bold text-gold mb-4"
               style={{
@@ -125,7 +137,7 @@ const Executivo = () => {
                 transition: 'opacity 0.6s ease-out, transform 0.6s ease-out'
               }}
             >
-              Poder Executivo
+              EXECUTIVO
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
           </div>
