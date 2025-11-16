@@ -1,9 +1,59 @@
+import { useState, useEffect, useRef } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PageBackground from "@/components/PageBackground";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Principios = () => {
+  const [isTitleVisible, setIsTitleVisible] = useState(false);
+  const [visibleItems, setVisibleItems] = useState<{ [key: string]: number[] }>({
+    sintese: [],
+    serMacom: [],
+    finalidades: []
+  });
+  const itemRefs = useRef<{ [key: string]: (HTMLDivElement | null)[] }>({
+    sintese: [],
+    serMacom: [],
+    finalidades: []
+  });
+
+  useEffect(() => {
+    setIsTitleVisible(true);
+  }, []);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    Object.keys(itemRefs.current).forEach((key) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = itemRefs.current[key].indexOf(entry.target as HTMLDivElement);
+              if (index !== -1) {
+                setVisibleItems((prev) => ({
+                  ...prev,
+                  [key]: [...(prev[key] || []), index].filter((v, i, a) => a.indexOf(v) === i)
+                }));
+              }
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      );
+
+      const refs = itemRefs.current[key];
+      refs.forEach((ref) => {
+        if (ref) observer.observe(ref);
+      });
+
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
   const sintesePrincipios = [
     {
       number: "1",
@@ -147,7 +197,15 @@ const Principios = () => {
       <section className="pt-24 pb-24 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gold mb-4">
+            <h1 
+              className="text-4xl md:text-5xl font-bold text-gold mb-4"
+              style={{
+                fontFamily: "'Cinzel Decorative', serif",
+                opacity: isTitleVisible ? 1 : 0,
+                transform: isTitleVisible ? 'translateY(0)' : 'translateY(30px)',
+                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out'
+              }}
+            >
               Princípios da Maçonaria
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
@@ -155,39 +213,63 @@ const Principios = () => {
 
           <div className="max-w-6xl mx-auto">
             <Tabs defaultValue="sintese" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 mb-12 bg-charcoal border border-gold/20">
-                <TabsTrigger value="sintese" className="data-[state=active]:bg-gold/20 data-[state=active]:text-gold">
+              <TabsList className="grid w-full grid-cols-3 mb-12 bg-charcoal border border-gold/20 rounded-lg p-1">
+                <TabsTrigger 
+                  value="sintese" 
+                  className="data-[state=active]:bg-gold/20 data-[state=active]:text-gold transition-all"
+                >
                   Síntese dos Princípios
                 </TabsTrigger>
-                <TabsTrigger value="ser-macom" className="data-[state=active]:bg-gold/20 data-[state=active]:text-gold">
+                <TabsTrigger 
+                  value="ser-macom" 
+                  className="data-[state=active]:bg-gold/20 data-[state=active]:text-gold transition-all"
+                >
                   Ser Maçom
                 </TabsTrigger>
-                <TabsTrigger value="finalidades" className="data-[state=active]:bg-gold/20 data-[state=active]:text-gold">
+                <TabsTrigger 
+                  value="finalidades" 
+                  className="data-[state=active]:bg-gold/20 data-[state=active]:text-gold transition-all"
+                >
                   Nossas Finalidades
                 </TabsTrigger>
               </TabsList>
 
               {/* Síntese dos Princípios Maçônicos */}
               <TabsContent value="sintese" className="space-y-6">
-                <div className="bg-charcoal p-8 rounded-lg">
+                <div className="bg-charcoal p-10 rounded-lg border border-gold/20">
                   <h2 className="text-2xl md:text-3xl font-bold text-gold mb-8 text-center">
                     Síntese dos Princípios Maçônicos
                   </h2>
                   <div className="space-y-4">
-                    {sintesePrincipios.map((principio) => (
+                    {sintesePrincipios.map((principio, index) => (
                       <div
                         key={principio.number}
-                        className="flex gap-4 p-4 bg-charcoal-light rounded-lg border-l-4 border-gold hover:border-gold/70 transition-colors"
+                        ref={(el) => {
+                          if (!itemRefs.current.sintese) {
+                            itemRefs.current.sintese = [];
+                          }
+                          itemRefs.current.sintese[index] = el;
+                        }}
+                        className="border-l-4 border-gold pl-6 py-4 bg-charcoal-light/50 rounded-r-lg hover:border-gold/70 hover:bg-charcoal-light transition-all duration-300 group"
+                        style={{
+                          opacity: visibleItems.sintese.includes(index) ? 1 : 0,
+                          transform: visibleItems.sintese.includes(index) 
+                            ? 'translateX(0)' 
+                            : 'translateX(-20px)',
+                          transition: `opacity 0.6s ease-out ${index * 0.05}s, transform 0.6s ease-out ${index * 0.05}s, border-color 0.3s, background-color 0.3s`
+                        }}
                       >
-                        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center">
-                          <span className="text-charcoal font-bold text-sm">{principio.number}</span>
+                        <div className="flex gap-4 items-start">
+                          <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span className="text-charcoal font-bold text-sm">{principio.number}</span>
+                          </div>
+                          <p 
+                            className="text-foreground/90 leading-relaxed flex-1 text-base"
+                            style={{ fontFamily: "'Lato', sans-serif" }}
+                          >
+                            {principio.text}
+                          </p>
                         </div>
-                        <p 
-                          className="text-foreground/90 leading-relaxed flex-1"
-                          style={{ fontFamily: "'Lato', sans-serif" }}
-                        >
-                          {principio.text}
-                        </p>
                       </div>
                     ))}
                   </div>
@@ -196,25 +278,40 @@ const Principios = () => {
 
               {/* Ser Maçom */}
               <TabsContent value="ser-macom" className="space-y-6">
-                <div className="bg-charcoal p-8 rounded-lg">
+                <div className="bg-charcoal p-10 rounded-lg border border-gold/20">
                   <h2 className="text-2xl md:text-3xl font-bold text-gold mb-8 text-center">
                     Ser Maçom
                   </h2>
                   <div className="space-y-4">
-                    {serMacom.map((item) => (
+                    {serMacom.map((item, index) => (
                       <div
                         key={item.number}
-                        className="flex gap-4 p-4 bg-charcoal-light rounded-lg border-l-4 border-gold hover:border-gold/70 transition-colors"
+                        ref={(el) => {
+                          if (!itemRefs.current.serMacom) {
+                            itemRefs.current.serMacom = [];
+                          }
+                          itemRefs.current.serMacom[index] = el;
+                        }}
+                        className="border-l-4 border-gold pl-6 py-4 bg-charcoal-light/50 rounded-r-lg hover:border-gold/70 hover:bg-charcoal-light transition-all duration-300 group"
+                        style={{
+                          opacity: visibleItems.serMacom.includes(index) ? 1 : 0,
+                          transform: visibleItems.serMacom.includes(index) 
+                            ? 'translateX(0)' 
+                            : 'translateX(-20px)',
+                          transition: `opacity 0.6s ease-out ${index * 0.05}s, transform 0.6s ease-out ${index * 0.05}s, border-color 0.3s, background-color 0.3s`
+                        }}
                       >
-                        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center">
-                          <span className="text-charcoal font-bold text-xs">{item.number}</span>
+                        <div className="flex gap-4 items-start">
+                          <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span className="text-charcoal font-bold text-xs">{item.number}</span>
+                          </div>
+                          <p 
+                            className="text-foreground/90 leading-relaxed flex-1 text-base"
+                            style={{ fontFamily: "'Lato', sans-serif" }}
+                          >
+                            {item.text}
+                          </p>
                         </div>
-                        <p 
-                          className="text-foreground/90 leading-relaxed flex-1"
-                          style={{ fontFamily: "'Lato', sans-serif" }}
-                        >
-                          {item.text}
-                        </p>
                       </div>
                     ))}
                   </div>
@@ -223,25 +320,40 @@ const Principios = () => {
 
               {/* Nossas Finalidades */}
               <TabsContent value="finalidades" className="space-y-6">
-                <div className="bg-charcoal p-8 rounded-lg">
+                <div className="bg-charcoal p-10 rounded-lg border border-gold/20">
                   <h2 className="text-2xl md:text-3xl font-bold text-gold mb-8 text-center">
                     Nossas Finalidades
                   </h2>
                   <div className="space-y-4">
-                    {finalidades.map((item) => (
+                    {finalidades.map((item, index) => (
                       <div
                         key={item.number}
-                        className="flex gap-4 p-4 bg-charcoal-light rounded-lg border-l-4 border-gold hover:border-gold/70 transition-colors"
+                        ref={(el) => {
+                          if (!itemRefs.current.finalidades) {
+                            itemRefs.current.finalidades = [];
+                          }
+                          itemRefs.current.finalidades[index] = el;
+                        }}
+                        className="border-l-4 border-gold pl-6 py-4 bg-charcoal-light/50 rounded-r-lg hover:border-gold/70 hover:bg-charcoal-light transition-all duration-300 group"
+                        style={{
+                          opacity: visibleItems.finalidades.includes(index) ? 1 : 0,
+                          transform: visibleItems.finalidades.includes(index) 
+                            ? 'translateX(0)' 
+                            : 'translateX(-20px)',
+                          transition: `opacity 0.6s ease-out ${index * 0.05}s, transform 0.6s ease-out ${index * 0.05}s, border-color 0.3s, background-color 0.3s`
+                        }}
                       >
-                        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center">
-                          <span className="text-charcoal font-bold text-xs">{item.number}</span>
+                        <div className="flex gap-4 items-start">
+                          <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span className="text-charcoal font-bold text-xs">{item.number}</span>
+                          </div>
+                          <p 
+                            className="text-foreground/90 leading-relaxed flex-1 text-base"
+                            style={{ fontFamily: "'Lato', sans-serif" }}
+                          >
+                            {item.text}
+                          </p>
                         </div>
-                        <p 
-                          className="text-foreground/90 leading-relaxed flex-1"
-                          style={{ fontFamily: "'Lato', sans-serif" }}
-                        >
-                          {item.text}
-                        </p>
                       </div>
                     ))}
                   </div>
