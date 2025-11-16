@@ -11,6 +11,9 @@ const Navigation = () => {
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const [isFadingOut, setIsFadingOut] = useState<string | null>(null);
   const [isFadingIn, setIsFadingIn] = useState<string | null>(null);
+  const [expandedMenus, setExpandedMenus] = useState<Set<string>>(new Set());
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const fadeOutTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const fadeInTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -37,6 +40,24 @@ const Navigation = () => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  // Fechar dropdown do menu mobile ao clicar fora
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+        setIsMobileMenuOpen(false);
+        setExpandedMenus(new Set());
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
 
   // Estrutura de menus e submenus
   const menuItems = [
@@ -186,6 +207,18 @@ const Navigation = () => {
     }
   };
 
+  const toggleMobileMenu = (menuLabel: string) => {
+    setExpandedMenus((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(menuLabel)) {
+        newSet.delete(menuLabel);
+      } else {
+        newSet.add(menuLabel);
+      }
+      return newSet;
+    });
+  };
+
   return (
     <nav 
       className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-gold/20 transition-all duration-300" 
@@ -198,10 +231,10 @@ const Navigation = () => {
         <div className="flex items-center h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 md:space-x-3 flex-1" onClick={handleHomeClick}>
-            <div className="w-16 h-16 md:w-[88px] md:h-[88px] flex items-center justify-center">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-[88px] md:h-[88px] flex items-center justify-center">
               {logoError ? (
-                <div className="w-16 h-16 md:w-[88px] md:h-[88px] bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center">
-                  <span className="text-charcoal font-bold text-lg md:text-xl">G</span>
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-[88px] md:h-[88px] bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center">
+                  <span className="text-charcoal font-bold text-sm sm:text-base md:text-xl">G</span>
                 </div>
               ) : (
                 <img 
@@ -213,7 +246,7 @@ const Navigation = () => {
               )}
             </div>
             <span 
-              className="text-gold font-bold text-lg md:text-2xl hidden md:block"
+              className="text-gold font-bold text-sm sm:text-base md:text-2xl"
               style={{ fontFamily: "'Cinzel Decorative', serif" }}
             >
               GLOMAM
@@ -254,7 +287,7 @@ const Navigation = () => {
                     className={`absolute top-full left-0 -mt-1 w-64 rounded-lg shadow-lg py-2 z-50 transition-opacity duration-500 ${
                       isFadingOut === item.label 
                         ? 'opacity-0' 
-                        : isFadingIn === item.label 
+                        : isFadingIn === item.label
                         ? 'opacity-0 fade-in' 
                         : 'opacity-100'
                     }`}
@@ -292,8 +325,19 @@ const Navigation = () => {
             ))}
           </div>
 
+          {/* Mobile Navigation - HOME centralizado */}
+          <div className="lg:hidden flex items-center justify-center flex-1">
+            <Link
+              to="/"
+              onClick={handleHomeClick}
+              className="text-foreground hover:text-gold transition-colors duration-300 font-semibold text-sm"
+            >
+              HOME
+            </Link>
+          </div>
+
           {/* Botão Portal do Membro e Mobile Menu Button */}
-          <div className="flex items-center justify-end flex-1">
+          <div className="flex items-center justify-end flex-1 gap-3">
             <Button
               variant="outline"
               className="hidden lg:flex border-gold bg-gold hover:bg-gold hover:scale-105 hover:shadow-[0_0_20px_rgba(212,175,55,0.6)] active:scale-95 transition-all duration-300 text-sm relative overflow-hidden group"
@@ -302,10 +346,93 @@ const Navigation = () => {
               <span className="relative z-10">INTRANET</span>
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
             </Button>
+            {/* Mobile Menu Dropdown */}
+            <div className="lg:hidden relative" ref={mobileMenuRef}>
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(!isMobileMenuOpen);
+                  if (isMobileMenuOpen) {
+                    setExpandedMenus(new Set());
+                  }
+                }}
+                className="text-foreground hover:text-gold transition-colors duration-300 font-semibold text-sm"
+              >
+                MENU
+              </button>
+              {isMobileMenuOpen && (
+                <div className="absolute top-full right-0 mt-2 w-56 bg-charcoal-light border border-gold/20 rounded-lg shadow-lg py-2 z-50 max-h-[calc(100vh-8rem)] overflow-y-auto custom-scrollbar">
+                  {menuItems.map((item) => (
+                    <div key={item.label}>
+                      {item.href ? (
+                        <Link
+                          to={item.href}
+                          onClick={(e) => {
+                            setIsMobileMenuOpen(false);
+                            if (item.href === "/") {
+                              handleHomeClick(e);
+                            }
+                          }}
+                          className="block px-4 py-2 text-foreground/70 hover:text-gold hover:bg-gold/10 transition-colors text-sm"
+                        >
+                          {item.label}
+                        </Link>
+                      ) : (
+                        <>
+                          <button
+                            onClick={() => toggleMobileMenu(item.label)}
+                            className="w-full flex items-center justify-between px-4 py-2 text-foreground hover:text-gold transition-colors font-semibold text-sm"
+                          >
+                            <span>{item.label}</span>
+                            <ChevronDown 
+                              className={`h-4 w-4 transition-transform duration-300 ${
+                                expandedMenus.has(item.label) ? 'rotate-180' : ''
+                              }`}
+                            />
+                          </button>
+                          {item.submenus && expandedMenus.has(item.label) && (
+                            <div className="pl-4 space-y-1 overflow-hidden transition-all duration-300 ease-in-out">
+                              {item.submenus.map((submenu) => (
+                                <Link
+                                  key={submenu.href}
+                                  to={submenu.href}
+                                  onClick={() => {
+                                    setIsMobileMenuOpen(false);
+                                    setIsOpen(false);
+                                  }}
+                                  className={`block py-2 text-sm ${
+                                    (submenu as any).disabled
+                                      ? 'text-foreground/40 cursor-not-allowed line-through'
+                                      : submenu.active
+                                      ? 'text-gold font-semibold'
+                                      : 'text-foreground/70 hover:text-gold'
+                                  }`}
+                                  onMouseDown={(e) => {
+                                    if ((submenu as any).disabled) {
+                                      e.preventDefault();
+                                    }
+                                  }}
+                                >
+                                  {submenu.label}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
             {/* Mobile Menu Button */}
             <button
               className="lg:hidden text-gold"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => {
+                setIsOpen(!isOpen);
+                if (isOpen) {
+                  setExpandedMenus(new Set());
+                }
+              }}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -333,11 +460,19 @@ const Navigation = () => {
                   </Link>
                 ) : (
                   <div>
-                    <div className="py-3 text-foreground font-semibold">
-                      {item.label}
-                    </div>
-                    {item.submenus && (
-                      <div className="pl-4 space-y-2">
+                    <button
+                      onClick={() => toggleMobileMenu(item.label)}
+                      className="w-full flex items-center justify-between py-3 text-foreground hover:text-gold transition-colors font-semibold"
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown 
+                        className={`h-4 w-4 transition-transform duration-300 ${
+                          expandedMenus.has(item.label) ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                    {item.submenus && expandedMenus.has(item.label) && (
+                      <div className="pl-4 space-y-2 overflow-hidden transition-all duration-300 ease-in-out">
                         {item.submenus.map((submenu) => (
                           <Link
                             key={submenu.href}

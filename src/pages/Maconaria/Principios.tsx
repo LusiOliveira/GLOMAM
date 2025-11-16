@@ -194,11 +194,11 @@ const Principios = () => {
   return (
     <PageBackground>
       <Navigation />
-      <section className="pt-24 pb-24 relative overflow-hidden">
+      <section className="pt-20 md:pt-24 pb-16 md:pb-24 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-16">
             <h1 
-              className="text-4xl md:text-5xl font-bold text-gold mb-4"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-gold mb-3 md:mb-4"
               style={{
                 fontFamily: "'Cinzel Decorative', serif",
                 opacity: isTitleVisible ? 1 : 0,
@@ -208,39 +208,39 @@ const Principios = () => {
             >
               Princípios da Maçonaria
             </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
+            <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
           </div>
 
           <div className="max-w-6xl mx-auto">
             <Tabs defaultValue="sintese" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 mb-12 bg-charcoal border border-gold/20 rounded-lg p-1">
+              <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 mb-6 md:mb-12 bg-charcoal border border-gold/20 rounded-lg p-0.5 md:p-1 gap-0.5 md:gap-0">
                 <TabsTrigger 
                   value="sintese" 
-                  className="data-[state=active]:bg-gold/20 data-[state=active]:text-gold transition-all"
+                  className="data-[state=active]:bg-gold/20 data-[state=active]:text-gold transition-all text-xs md:text-sm py-2 md:py-1 px-2 md:px-2"
                 >
                   Síntese dos Princípios
                 </TabsTrigger>
                 <TabsTrigger 
                   value="ser-macom" 
-                  className="data-[state=active]:bg-gold/20 data-[state=active]:text-gold transition-all"
+                  className="data-[state=active]:bg-gold/20 data-[state=active]:text-gold transition-all text-xs md:text-sm py-2 md:py-1 px-2 md:px-2"
                 >
                   Ser Maçom
                 </TabsTrigger>
                 <TabsTrigger 
                   value="finalidades" 
-                  className="data-[state=active]:bg-gold/20 data-[state=active]:text-gold transition-all"
+                  className="data-[state=active]:bg-gold/20 data-[state=active]:text-gold transition-all text-xs md:text-sm py-2 md:py-1 px-2 md:px-2"
                 >
                   Nossas Finalidades
                 </TabsTrigger>
               </TabsList>
 
               {/* Síntese dos Princípios Maçônicos */}
-              <TabsContent value="sintese" className="space-y-6">
-                <div className="bg-charcoal p-10 rounded-lg border border-gold/20">
-                  <h2 className="text-2xl md:text-3xl font-bold text-gold mb-8 text-center">
+              <TabsContent value="sintese" className="space-y-4 md:space-y-6">
+                <div className="bg-charcoal p-4 md:p-6 lg:p-10 rounded-lg border border-gold/20">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gold mb-6 md:mb-8 text-center">
                     Síntese dos Princípios Maçônicos
                   </h2>
-                  <div className="space-y-4">
+                  <div className="space-y-3 md:space-y-4">
                     {sintesePrincipios.map((principio, index) => (
                       <div
                         key={principio.number}
@@ -250,7 +250,7 @@ const Principios = () => {
                           }
                           itemRefs.current.sintese[index] = el;
                         }}
-                        className="border-l-4 border-gold pl-6 py-4 bg-charcoal-light/50 rounded-r-lg hover:border-gold/70 hover:bg-charcoal-light transition-all duration-300 group"
+                        className="border-l-4 border-gold pl-3 md:pl-4 lg:pl-6 py-3 md:py-4 bg-charcoal-light/50 rounded-r-lg hover:border-gold/70 hover:bg-charcoal-light transition-all duration-300 group"
                         style={{
                           opacity: visibleItems.sintese.includes(index) ? 1 : 0,
                           transform: visibleItems.sintese.includes(index) 
@@ -259,12 +259,12 @@ const Principios = () => {
                           transition: `opacity 0.6s ease-out ${index * 0.05}s, transform 0.6s ease-out ${index * 0.05}s, border-color 0.3s, background-color 0.3s`
                         }}
                       >
-                        <div className="flex gap-4 items-start">
-                          <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span className="text-charcoal font-bold text-sm">{principio.number}</span>
+                        <div className="flex gap-2 md:gap-3 lg:gap-4 items-start">
+                          <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span className="text-charcoal font-bold text-xs md:text-sm">{principio.number}</span>
                           </div>
                           <p 
-                            className="text-foreground/90 leading-relaxed flex-1 text-base"
+                            className="text-foreground/90 leading-relaxed flex-1 text-sm md:text-base"
                             style={{ fontFamily: "'Lato', sans-serif" }}
                           >
                             {principio.text}
@@ -277,12 +277,12 @@ const Principios = () => {
               </TabsContent>
 
               {/* Ser Maçom */}
-              <TabsContent value="ser-macom" className="space-y-6">
-                <div className="bg-charcoal p-10 rounded-lg border border-gold/20">
-                  <h2 className="text-2xl md:text-3xl font-bold text-gold mb-8 text-center">
+              <TabsContent value="ser-macom" className="space-y-4 md:space-y-6">
+                <div className="bg-charcoal p-4 md:p-6 lg:p-10 rounded-lg border border-gold/20">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gold mb-6 md:mb-8 text-center">
                     Ser Maçom
                   </h2>
-                  <div className="space-y-4">
+                  <div className="space-y-3 md:space-y-4">
                     {serMacom.map((item, index) => (
                       <div
                         key={item.number}
@@ -292,7 +292,7 @@ const Principios = () => {
                           }
                           itemRefs.current.serMacom[index] = el;
                         }}
-                        className="border-l-4 border-gold pl-6 py-4 bg-charcoal-light/50 rounded-r-lg hover:border-gold/70 hover:bg-charcoal-light transition-all duration-300 group"
+                        className="border-l-4 border-gold pl-3 md:pl-4 lg:pl-6 py-3 md:py-4 bg-charcoal-light/50 rounded-r-lg hover:border-gold/70 hover:bg-charcoal-light transition-all duration-300 group"
                         style={{
                           opacity: visibleItems.serMacom.includes(index) ? 1 : 0,
                           transform: visibleItems.serMacom.includes(index) 
@@ -301,12 +301,12 @@ const Principios = () => {
                           transition: `opacity 0.6s ease-out ${index * 0.05}s, transform 0.6s ease-out ${index * 0.05}s, border-color 0.3s, background-color 0.3s`
                         }}
                       >
-                        <div className="flex gap-4 items-start">
-                          <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span className="text-charcoal font-bold text-xs">{item.number}</span>
+                        <div className="flex gap-2 md:gap-3 lg:gap-4 items-start">
+                          <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span className="text-charcoal font-bold text-[10px] md:text-xs">{item.number}</span>
                           </div>
                           <p 
-                            className="text-foreground/90 leading-relaxed flex-1 text-base"
+                            className="text-foreground/90 leading-relaxed flex-1 text-sm md:text-base"
                             style={{ fontFamily: "'Lato', sans-serif" }}
                           >
                             {item.text}
@@ -319,12 +319,12 @@ const Principios = () => {
               </TabsContent>
 
               {/* Nossas Finalidades */}
-              <TabsContent value="finalidades" className="space-y-6">
-                <div className="bg-charcoal p-10 rounded-lg border border-gold/20">
-                  <h2 className="text-2xl md:text-3xl font-bold text-gold mb-8 text-center">
+              <TabsContent value="finalidades" className="space-y-4 md:space-y-6">
+                <div className="bg-charcoal p-4 md:p-6 lg:p-10 rounded-lg border border-gold/20">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gold mb-6 md:mb-8 text-center">
                     Nossas Finalidades
                   </h2>
-                  <div className="space-y-4">
+                  <div className="space-y-3 md:space-y-4">
                     {finalidades.map((item, index) => (
                       <div
                         key={item.number}
@@ -334,7 +334,7 @@ const Principios = () => {
                           }
                           itemRefs.current.finalidades[index] = el;
                         }}
-                        className="border-l-4 border-gold pl-6 py-4 bg-charcoal-light/50 rounded-r-lg hover:border-gold/70 hover:bg-charcoal-light transition-all duration-300 group"
+                        className="border-l-4 border-gold pl-3 md:pl-4 lg:pl-6 py-3 md:py-4 bg-charcoal-light/50 rounded-r-lg hover:border-gold/70 hover:bg-charcoal-light transition-all duration-300 group"
                         style={{
                           opacity: visibleItems.finalidades.includes(index) ? 1 : 0,
                           transform: visibleItems.finalidades.includes(index) 
@@ -343,12 +343,12 @@ const Principios = () => {
                           transition: `opacity 0.6s ease-out ${index * 0.05}s, transform 0.6s ease-out ${index * 0.05}s, border-color 0.3s, background-color 0.3s`
                         }}
                       >
-                        <div className="flex gap-4 items-start">
-                          <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <span className="text-charcoal font-bold text-xs">{item.number}</span>
+                        <div className="flex gap-2 md:gap-3 lg:gap-4 items-start">
+                          <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span className="text-charcoal font-bold text-[10px] md:text-xs">{item.number}</span>
                           </div>
                           <p 
-                            className="text-foreground/90 leading-relaxed flex-1 text-base"
+                            className="text-foreground/90 leading-relaxed flex-1 text-sm md:text-base"
                             style={{ fontFamily: "'Lato', sans-serif" }}
                           >
                             {item.text}

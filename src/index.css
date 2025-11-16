@@ -114,3 +114,36 @@ All colors MUST be HSL.
 .fade-out {
   animation: fadeOut 0.5s ease-in-out forwards;
 }
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================
+   TEMPORÁRIO: Desabilitar versão mobile
+   Para reativar, remova ou comente todo este bloco abaixo
+   ============================================ */
+@media (max-width: 1023px) {
+  /* Esconder todos os elementos mobile */
+  .lg\:hidden {
+    display: none !important;
+  }
+  
+  /* Mostrar todos os elementos desktop */
+  .hidden.lg\:flex {
+    display: flex !important;
+  }
+  
+  .hidden.lg\:block {
+    display: block !important;
+  }
+}
+/* ============================================
+   FIM DO BLOCO TEMPORÁRIO
+   ============================================ */
