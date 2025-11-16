@@ -1,6 +1,9 @@
 const Footer = () => {
   return (
-    <footer className="bg-charcoal border-t border-gold/20 py-12" style={{ fontFamily: "'Lato', sans-serif" }}>
+    <footer 
+      className="bg-charcoal border-t border-gold/20 py-12 transition-all duration-500 ease-in-out" 
+      style={{ fontFamily: "'Lato', sans-serif" }}
+    >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* About */}
@@ -26,9 +29,11 @@ const Footer = () => {
           <div>
             <h4 className="text-gold font-bold mb-4">Links Rápidos</h4>
             <ul className="space-y-2">
-              {["HOME", "NOSSA HISTORIA", "MAÇONARIA", "ADMINISTRAÇÃO", "LOJAS", "DISPENSÁRIO"].map((link) => {
+              {["HOME", "NOSSA HISTORIA", "MAÇONARIA", "GOVERNANTES", "LOJAS", "DISPENSÁRIO"].map((link) => {
                 const href = link === "NOSSA HISTORIA" 
                   ? "/glomam/nossa-historia"
+                  : link === "GOVERNANTES"
+                  ? "/administracao/governantes"
                   : `#${link.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`;
                 return (
                   <li key={link}>

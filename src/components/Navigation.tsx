@@ -195,13 +195,13 @@ const Navigation = () => {
       }}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center h-20">
+        <div className="flex items-center h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 flex-1" onClick={handleHomeClick}>
-            <div className="w-16 h-16 flex items-center justify-center">
+          <Link to="/" className="flex items-center space-x-2 md:space-x-3 flex-1" onClick={handleHomeClick}>
+            <div className="w-16 h-16 md:w-[88px] md:h-[88px] flex items-center justify-center">
               {logoError ? (
-                <div className="w-16 h-16 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center">
-                  <span className="text-charcoal font-bold text-xl">G</span>
+                <div className="w-16 h-16 md:w-[88px] md:h-[88px] bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center">
+                  <span className="text-charcoal font-bold text-lg md:text-xl">G</span>
                 </div>
               ) : (
                 <img 
@@ -213,7 +213,7 @@ const Navigation = () => {
               )}
             </div>
             <span 
-              className="text-gold font-bold text-xl hidden md:block"
+              className="text-gold font-bold text-lg md:text-2xl hidden md:block"
               style={{ fontFamily: "'Cinzel Decorative', serif" }}
             >
               GLOMAM
