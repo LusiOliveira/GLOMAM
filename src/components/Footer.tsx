@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer 
-      className="bg-charcoal border-t border-gold/20 py-12 transition-all duration-500 ease-in-out" 
+      className="bg-charcoal border-t border-gold/20 pt-12 pb-0 transition-all duration-500 ease-in-out" 
       style={{ fontFamily: "'Lato', sans-serif" }}
     >
       <div className="container mx-auto px-4">
@@ -63,7 +63,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gold/20 pt-8 text-center">
+        <div className="border-t border-gold/20 pt-6 pb-6 text-center" style={{ marginBottom: 0 }}>
           <p className="text-foreground/60 text-sm">
               GLOMAM © {new Date().getFullYear()}. Todos os direitos
             reservados.
