@@ -35,6 +35,8 @@ const Glomam = () => {
                   src={symbolsImage}
                   alt="Símbolos Maçônicos"
                   className="relative rounded-lg shadow-elegant w-full h-auto"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 

@@ -239,7 +239,9 @@ const Navigation = () => {
               ) : (
                 <img 
                   src="/images/logo/Logo.png" 
-                  alt="Grande Loja Maçônica" 
+                  alt="Grande Loja Maçônica"
+                  fetchPriority="high"
+                  loading="eager" 
                   className="h-full w-full object-contain"
                   onError={() => setLogoError(true)}
                 />

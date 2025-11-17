@@ -6,15 +6,23 @@ const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        
-        // Calcula o offset baseado na posição da seção na viewport
-        // Multiplicador reduzido para movimento mais suave e sutil
-        const offset = (windowHeight - rect.top) * 0.08;
-        setScrollOffset(offset);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (sectionRef.current) {
+            const rect = sectionRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Calcula o offset baseado na posição da seção na viewport
+            // Multiplicador reduzido para movimento mais suave e sutil
+            const offset = (windowHeight - rect.top) * 0.08;
+            setScrollOffset(offset);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

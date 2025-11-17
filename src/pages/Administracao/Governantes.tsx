@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PageBackground from "@/components/PageBackground";
@@ -11,7 +11,7 @@ const Governantes = () => {
   const [dynamicScales, setDynamicScales] = useState<number[]>([1.05, 1.05, 1.05]);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const governantes = [
+  const governantes = useMemo(() => [
     {
       id: 2,
       image: "/images/governantes/Grao-Mestre.png",
@@ -30,7 +30,7 @@ const Governantes = () => {
       name: "Segundo Vigilante",
       position: "2º Vigilante",
     },
-  ];
+  ], []);
 
   useEffect(() => {
     setIsTitleVisible(true);
@@ -69,39 +69,47 @@ const Governantes = () => {
   }, []);
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const windowHeight = window.innerHeight;
-      
-      const newScales = cardRefs.current.map((ref) => {
-        if (!ref) return 1.05;
-        
-        const rect = ref.getBoundingClientRect();
-        const elementTop = rect.top;
-        const elementCenter = rect.top + rect.height / 2;
-        const viewportCenter = windowHeight / 2;
-        
-        // Calcula o scale máximo baseado na posição do elemento
-        // Quando o elemento está no centro da viewport, scale máximo = 1.05
-        // Quando está mais longe do centro, scale máximo diminui até 1.02
-        let maxScale = 1.05;
-        
-        if (elementTop < windowHeight && elementTop + rect.height > 0) {
-          // Elemento está visível na viewport
-          const distanceFromCenter = Math.abs(elementCenter - viewportCenter);
-          const maxDistance = windowHeight / 2;
-          const progress = Math.min(1, distanceFromCenter / maxDistance);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const windowHeight = window.innerHeight;
           
-          // Scale varia de 1.05 (no centro) a 1.02 (longe do centro)
-          maxScale = 1.05 - (progress * 0.03);
-        } else {
-          // Elemento fora da viewport - scale mínimo
-          maxScale = 1.02;
-        }
-        
-        return Math.max(1.02, Math.min(1.05, maxScale));
-      });
-      
-      setDynamicScales(newScales);
+          const newScales = cardRefs.current.map((ref) => {
+            if (!ref) return 1.05;
+            
+            const rect = ref.getBoundingClientRect();
+            const elementTop = rect.top;
+            const elementCenter = rect.top + rect.height / 2;
+            const viewportCenter = windowHeight / 2;
+            
+            // Calcula o scale máximo baseado na posição do elemento
+            // Quando o elemento está no centro da viewport, scale máximo = 1.05
+            // Quando está mais longe do centro, scale máximo diminui até 1.02
+            let maxScale = 1.05;
+            
+            if (elementTop < windowHeight && elementTop + rect.height > 0) {
+              // Elemento está visível na viewport
+              const distanceFromCenter = Math.abs(elementCenter - viewportCenter);
+              const maxDistance = windowHeight / 2;
+              const progress = Math.min(1, distanceFromCenter / maxDistance);
+              
+              // Scale varia de 1.05 (no centro) a 1.02 (longe do centro)
+              maxScale = 1.05 - (progress * 0.03);
+            } else {
+              // Elemento fora da viewport - scale mínimo
+              maxScale = 1.02;
+            }
+            
+            return Math.max(1.02, Math.min(1.05, maxScale));
+          });
+          
+          setDynamicScales(newScales);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -170,6 +178,8 @@ const Governantes = () => {
                       src={governante.image}
                       alt={governante.name}
                       className="w-full h-auto object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <div 

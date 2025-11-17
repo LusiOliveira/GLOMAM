@@ -590,7 +590,11 @@ location / {
 - **Lighthouse**: Teste de performance regularmente
 - **Bundle size**: Monitorar tamanho do bundle
 - **Images**: Otimizar imagens antes de adicionar
-- **Lazy loading**: Implementar para componentes pesados
+- **Lazy loading**: Implementado em todas as imagens (exceto críticas como logo e hero)
+- **Code splitting**: Páginas carregadas sob demanda com React.lazy
+- **RequestAnimationFrame**: Event listeners de scroll otimizados
+- **useMemo**: Arrays estáticos memoizados para evitar recriações
+- **Manual chunks**: Vendors separados em chunks para melhor cache
 
 ---
 
@@ -614,6 +618,8 @@ location / {
   - `hero-masonic-regalia.jpg` - Imagem alternativa do hero
 - **Formatos suportados**: JPG, PNG, SVG
 - **Otimização**: Recomendado usar ferramentas como ImageOptim ou Squoosh antes do deploy
+- **Lazy loading**: Todas as imagens (exceto críticas) usam `loading="lazy"` e `decoding="async"`
+- **Prioridade de carregamento**: Imagens críticas (logo, hero) usam `fetchPriority="high"` e `loading="eager"`
 
 ### Scrollbar Customizada
 
@@ -650,6 +656,22 @@ Para dúvidas sobre o desenvolvimento ou manutenção do site:
 ---
 
 ## 📅 Changelog
+
+### Versão 1.2.0 (Janeiro 2025)
+
+**Otimizações de Performance:**
+- ✅ Code splitting implementado com React.lazy para todas as páginas
+- ✅ Event listeners de scroll otimizados com requestAnimationFrame
+- ✅ Lazy loading implementado em todas as imagens não-críticas
+- ✅ useMemo aplicado em arrays estáticos (executivos, governantes, faqs, etc.)
+- ✅ Manual chunks configurados para melhor cache de vendors
+- ✅ Preload de recursos críticos (banner, logo, hero) no index.html
+- ✅ Otimização de imagens críticas com fetchPriority="high"
+
+**Melhorias:**
+- ✅ Scroll mais suave e responsivo em todas as páginas
+- ✅ Tempo de carregamento inicial reduzido
+- ✅ Melhor uso de memória e performance geral
 
 ### Versão 1.1.0 (Dezembro 2024)
 

@@ -1,10 +1,11 @@
+import { useMemo } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PageBackground from "@/components/PageBackground";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const PerguntasRespostas = () => {
-  const faqs = [
+  const faqs = useMemo(() => [
     {
       question: "A Maçonaria é uma religião?",
       answer: "A Maçonaria não é uma religião no sentido de ser uma seita, mas é um culto que une homens de bons costumes. A Maçonaria não promove nenhum dogma que deve ser aceito taticamente por todos, mas inculca nos homens a prática da virtude, não oferecendo panacéias para a redenção de pecados. Seu credo religioso consiste apenas em dois artigos de fé que não foram inventados por homens, mas que se encontram neles instintivamente desde os mais remotos tempos da história: A existência de Deus e a Imortalidade da Alma que tem como corolário a Irmandade dos Homens sob a Paternidade de Deus.",
@@ -61,7 +62,7 @@ const PerguntasRespostas = () => {
       question: "A Maçonaria é uma sociedade secreta?",
       answer: "A Maçonaria não é uma sociedade secreta, no sentido como tal termo é geralmente empregado. Uma sociedade secreta é aquela que tem objetivos secretos e ocultos a sua existência assim como as datas e locais de suas sessões. O objetivo e propósito da Maçonaria, suas leis, história e filosofia tem sido divulgados em livros que estão à venda em qualquer livraria. Os únicos segredos que a maçonaria conserva são as cerimônias empregadas na admissão de seus membros e os meios usados pelos Maçons para se conhecerem.",
     },
-  ];
+  ], []);
 
   return (
     <PageBackground>

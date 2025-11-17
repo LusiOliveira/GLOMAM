@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PageBackground from "@/components/PageBackground";
@@ -9,7 +9,7 @@ const GrandesLojas = () => {
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const regioes = [
+  const regioes = useMemo(() => [
     {
       nome: "Norte",
       lojas: [
@@ -61,7 +61,7 @@ const GrandesLojas = () => {
         { nome: "Grande Loja Maçônica do Estado do Rio de Janeiro", url: "http://www.glmerj.org.br" },
       ],
     },
-  ];
+  ], []);
 
   useEffect(() => {
     setIsTitleVisible(true);

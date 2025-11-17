@@ -36,8 +36,10 @@ const Hero = () => {
             <div className="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
               <img 
                 src="/images/icons/Hero.png" 
-                alt="Grande Loja Maçônica" 
+                alt="Grande Loja Maçônica"
+                fetchPriority="high" 
                 className="h-full w-full object-contain"
+                loading="eager"
               />
             </div>
           </div>
