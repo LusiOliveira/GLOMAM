@@ -132,13 +132,14 @@ const Governantes = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
           </div>
 
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-3 gap-4 md:gap-8">
               {governantes.map((governante, index) => (
                 <div
                   key={governante.id}
                   ref={(el) => (cardRefs.current[index] = el)}
                   className="rounded-lg overflow-hidden transition-all duration-300 group cursor-pointer active:scale-95"
+                  style={{ maxWidth: '280px', margin: '0 auto' }}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                   onClick={() => {
