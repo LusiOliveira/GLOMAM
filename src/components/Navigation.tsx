@@ -340,14 +340,6 @@ const Navigation = () => {
 
           {/* Botão Portal do Membro e Mobile Menu Button */}
           <div className="flex items-center justify-end flex-1 gap-3">
-            <Button
-              variant="outline"
-              className="hidden lg:flex border-gold bg-gold hover:bg-gold hover:scale-105 hover:shadow-[0_0_20px_rgba(212,175,55,0.6)] active:scale-95 transition-all duration-300 text-sm relative overflow-hidden group"
-              style={{ fontFamily: "'Lato', sans-serif", color: '#161d34' }}
-            >
-              <span className="relative z-10">INTRANET</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
-            </Button>
             {/* Mobile Menu Dropdown */}
             <div className="lg:hidden relative" ref={mobileMenuRef}>
               <button

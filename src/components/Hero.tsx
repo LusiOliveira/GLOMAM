@@ -71,8 +71,9 @@ const Hero = () => {
             <a
               href="#contato"
               className="px-8 py-4 border-2 border-gold text-gold font-bold rounded hover:bg-gold hover:text-charcoal transition-all duration-300"
+              style={{ fontFamily: "'Lato', sans-serif", fontWeight: 'bold' }}
             >
-              Entre em Contato
+              INTRANET
             </a>
           </div>
         </div>

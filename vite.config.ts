@@ -8,6 +8,14 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    allowedHosts: ['*'],
+
+    hmr: {
+      host: "helminthological-subcubical-angelena.ngrok-free.dev",
+      protocol: "https",
+    },
+    origin: "https://helminthological-subcubical-angelena.ngrok-free.dev",
+    
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
