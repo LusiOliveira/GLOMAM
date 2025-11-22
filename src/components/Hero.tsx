@@ -64,12 +64,13 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="/glomam/nossa-historia"
-              className="px-8 py-4 bg-gradient-to-r from-gold to-gold-light text-charcoal font-bold rounded hover:shadow-gold transition-all duration-300 transform hover:scale-105"
+              className="px-8 py-4 bg-gradient-to-r from-gold to-gold-light text-charcoal font-bold rounded hover:shadow-gold transition-all duration-300 transform hover:scale-105 flex flex-col items-center justify-center"
             >
-              Conheça a GLOMAM
+              <span className="text-xs leading-tight">Conheça</span>
+              <span className="leading-tight">a GLOMAM</span>
             </a>
             <a
-              href="#contato"
+              href="/login"
               className="px-8 py-4 border-2 border-gold text-gold font-bold rounded hover:bg-gold hover:text-charcoal transition-all duration-300"
               style={{ fontFamily: "'Lato', sans-serif", fontWeight: 'bold' }}
             >

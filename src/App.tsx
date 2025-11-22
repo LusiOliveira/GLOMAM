@@ -33,6 +33,9 @@ const Lojas = lazy(() => import("./pages/Lojas/index"));
 // DISPENSÁRIO Pages - Lazy loaded
 const QuemSomos = lazy(() => import("./pages/Dispensario/QuemSomos"));
 
+// AUTH Pages - Lazy loaded
+const Login = lazy(() => import("./pages/Login"));
+
 // Loading component
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-charcoal">
@@ -77,6 +80,9 @@ const App = () => (
             
             {/* DISPENSÁRIO Routes */}
             <Route path="/dispensario/quem-somos" element={<QuemSomos />} />
+            
+            {/* AUTH Routes */}
+            <Route path="/login" element={<Login />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
