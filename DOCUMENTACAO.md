@@ -117,6 +117,7 @@ GLOMAM/
 │   │   ├── Dispensario.tsx     # Componente do Dispensário
 │   │   ├── Contact.tsx         # Seção de contato
 │   │   ├── Footer.tsx          # Rodapé do site
+│   │   ├── Login.tsx           # Página de login (Portal do Membro)
 │   │   ├── NavLink.tsx         # Componente de link de navegação
 │   │   └── PageBackground.tsx  # Componente de fundo de página
 │   ├── hooks/                  # Custom hooks React
@@ -148,6 +149,7 @@ GLOMAM/
 │   │   │   └── index.tsx        # Busca e filtros de lojas
 │   │   └── Dispensario/         # Páginas do DISPENSÁRIO
 │   │       └── QuemSomos.tsx
+│   │   └── Login.tsx            # Página de login/autenticação
 │   ├── App.tsx                  # Componente raiz com rotas
 │   ├── App.css                  # Estilos específicos do App
 │   ├── main.tsx                 # Ponto de entrada da aplicação
@@ -209,7 +211,11 @@ Seção hero com:
 - **Descrição**: Texto com princípios destacados em dourado
 - **Botões de ação**: 
   - "Conheça a GLOMAM" (link para `/glomam/nossa-historia`)
-  - "Entre em Contato" (scroll para seção #contato)
+    - Texto "Conheça" em fonte pequena acima de "a GLOMAM"
+  - "INTRANET" (link para `/login`)
+    - Fonte Lato Bold
+    - Bordas arredondadas
+    - Estilo consistente com o tema do site
 - **Indicador de scroll**: Animado na parte inferior
 - **Elementos decorativos**: Quadrados rotacionados nos cantos (desktop)
 
@@ -235,6 +241,27 @@ Rodapé com:
 - Links rápidos organizados por seção
 - Informações de contato
 - Copyright e informações legais
+
+### Login.tsx
+Página de login/autenticação (Portal do Membro) com:
+- **Design consistente**: Usa Navigation, Footer e PageBackground como outras páginas
+- **Formulário de login**: 
+  - Campo de email/usuário
+  - Campo de senha com botão para mostrar/ocultar
+  - Checkbox "Lembrar-me"
+  - Link "Esqueci minha senha"
+- **Estilo**: 
+  - Card centralizado com fundo translúcido
+  - Bordas douradas
+  - Elementos decorativos nos cantos
+  - Fonte Lato para textos
+  - Fonte Cinzel Decorative para título
+- **Funcionalidades**:
+  - Validação de campos obrigatórios
+  - Toggle de visibilidade de senha
+  - Links para cadastro e voltar ao site
+- **Rota**: `/login`
+- **Acesso**: Através do botão INTRANET no Hero
 
 ---
 
@@ -272,6 +299,9 @@ O site utiliza **React Router DOM** para navegação SPA. Todas as rotas estão 
 
 **DISPENSÁRIO:**
 - `/dispensario/quem-somos` - QuemSomos.tsx
+
+**AUTH (Autenticação):**
+- `/login` - Login.tsx (Portal do Membro - Página de login)
 
 **404:**
 - `*` - NotFound.tsx (qualquer rota não encontrada)
@@ -437,6 +467,7 @@ O projeto utiliza o sistema de espaçamento do Tailwind:
 - **Menu responsivo**: Hambúrguer para mobile
 - **Navegação suave**: Scroll suave entre seções
 - **Active states**: Links ativos destacados em dourado
+- **Botão INTRANET**: No Hero, redireciona para página de login (`/login`)
 
 ### Animações
 
@@ -657,6 +688,26 @@ Para dúvidas sobre o desenvolvimento ou manutenção do site:
 
 ## 📅 Changelog
 
+### Versão 1.3.0 (Janeiro 2025)
+
+**Adições:**
+- ✅ Página de login completa (`/login`)
+  - Formulário de autenticação com validação
+  - Toggle de visibilidade de senha
+  - Checkbox "Lembrar-me"
+  - Links para cadastro e recuperação de senha
+  - Design consistente com Navigation, Footer e PageBackground
+- ✅ Botão INTRANET no Hero atualizado
+  - Redireciona para página de login
+  - Fonte Lato Bold
+  - Bordas arredondadas
+- ✅ Rota de autenticação adicionada ao sistema de rotas
+
+**Melhorias:**
+- 🎨 Design da página de login alinhado ao tema do site
+- 📱 Página de login totalmente responsiva
+- ♿ Acessibilidade implementada (labels, aria-labels)
+
 ### Versão 1.2.0 (Janeiro 2025)
 
 **Otimizações de Performance:**
@@ -703,6 +754,6 @@ Para dúvidas sobre o desenvolvimento ou manutenção do site:
 
 ---
 
-**Última atualização**: Dezembro 2024  
-**Versão**: 1.1.0  
+**Última atualização**: Janeiro 2025  
+**Versão**: 1.3.0  
 **Mantenedor**: Grande Loja Maçônica do Amazonas (GLOMAM)
