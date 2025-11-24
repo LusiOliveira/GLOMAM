@@ -45,39 +45,46 @@ const Hero = () => {
           </div>
 
           <h1 
-            className="text-4xl md:text-6xl font-bold mb-6 text-gold leading-tight"
-            style={{ fontFamily: "'Cinzel Decorative', serif" }}
+            className="text-4xl md:text-6xl mb-1 uppercase relative z-20"
+            style={{ 
+              fontFamily: "'Baskerville Old Face', serif", 
+              fontWeight: 'normal',
+              background: 'linear-gradient(to right, #e3da98, #d3a54c)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              lineHeight: '1.2'
+            }}
           >
             Grande Loja Maçônica do Amazonas
           </h1>
 
           <p 
-            className="text-lg md:text-xl text-foreground/90 mb-8 max-w-3xl mx-auto leading-relaxed"
-            style={{ fontFamily: "'Cinzel', serif" }}
+            className="text-base md:text-lg text-white mb-8 max-w-3xl mx-auto leading-relaxed uppercase"
+            style={{ fontFamily: "'Lato', sans-serif", fontWeight: 700 }}
           >
-          Lorem Ipsum {""}
-            <span className="text-gold">Lorem Ipsum</span>,{" "}
-            <span className="text-gold">Lorem Ipsum</span> e{" "}
-            <span className="text-gold">Lorem Ipsum</span>
+            DESDE 1904, A GRANDE LOJA MAIS ANTIGA DO BRASIL.
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href="/glomam/nossa-historia"
-              className="px-8 py-4 bg-gradient-to-r from-gold to-gold-light text-charcoal font-bold rounded hover:shadow-gold transition-all duration-300 transform hover:scale-105 flex flex-col items-center justify-center"
-            >
-              <span className="text-xs leading-tight">Conheça</span>
-              <span className="leading-tight">a GLOMAM</span>
-            </a>
-            <a
-              href="/login"
-              className="px-8 py-4 border-2 border-gold text-gold font-bold rounded hover:bg-gold hover:text-charcoal transition-all duration-300"
-              style={{ fontFamily: "'Lato', sans-serif", fontWeight: 'bold' }}
-            >
-              INTRANET
-            </a>
-          </div>
         </div>
+      </div>
+
+      {/* Buttons positioned above scroll indicator */}
+      <div className="absolute bottom-24 left-[calc(50%+16px)] -translate-x-1/2 flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <a
+          href="/glomam/nossa-historia"
+          className="px-6 py-3 h-[56px] bg-gradient-to-r from-gold to-gold-light text-charcoal font-black hover:shadow-gold transition-all duration-300 flex flex-col items-center justify-center uppercase whitespace-nowrap"
+          style={{ fontFamily: "'Lato', sans-serif", fontWeight: 900, borderRadius: '12px' }}
+        >
+          <span className="text-xs leading-tight font-black">CONHEÇA</span>
+          <span className="text-2xl leading-tight font-black">GLOMAM</span>
+        </a>
+        <a
+          href="/login"
+          className="px-6 py-3 h-[56px] border-2 font-black hover:bg-gold hover:text-charcoal transition-all duration-300 flex items-center justify-center uppercase text-2xl whitespace-nowrap"
+          style={{ fontFamily: "'Lato', sans-serif", fontWeight: 900, color: '#e3da98', borderColor: '#e3da98', borderRadius: '12px' }}
+        >
+          INTRANET
+        </a>
       </div>
 
       {/* Scroll Indicator */}

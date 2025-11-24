@@ -247,12 +247,26 @@ const Navigation = () => {
                 />
               )}
             </div>
-            <span 
-              className="text-gold font-bold text-sm sm:text-base md:text-2xl"
-              style={{ fontFamily: "'Cinzel Decorative', serif" }}
-            >
-              GLOMAM
-            </span>
+            <div className="flex flex-col">
+              <span 
+                className="text-sm sm:text-base md:text-2xl font-normal uppercase"
+                style={{ 
+                  fontFamily: "'Baskerville Old Face', serif",
+                  background: 'linear-gradient(to right, #e3da98, #d3a54c)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                GLOMAM
+              </span>
+              <span 
+                className="text-[5px] sm:text-[7px] md:text-[8px] text-white uppercase"
+                style={{ fontFamily: "'Lato', sans-serif" }}
+              >
+                GRANDE LOJA MAÇONICA DO AMAZONAS
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation - Centralizado */}
@@ -265,7 +279,8 @@ const Navigation = () => {
                 {item.href ? (
                   <Link
                     to={item.href}
-                    className="px-2 py-1 text-foreground hover:text-gold transition-colors duration-300 font-semibold text-sm tracking-wide flex items-center"
+                    className="px-2 py-1 text-foreground hover:text-gold transition-colors duration-300 font-black text-sm tracking-wide flex items-center"
+                    style={{ fontFamily: "'Lato', sans-serif", fontWeight: 900 }}
                     onMouseEnter={() => item.submenus && handleMouseEnter(item.label)}
                     onMouseLeave={handleMouseLeave}
                     onClick={item.href === "/" ? handleHomeClick : undefined}
@@ -274,7 +289,8 @@ const Navigation = () => {
                   </Link>
                 ) : (
                   <button
-                    className="px-2 py-1 text-foreground hover:text-gold transition-colors duration-300 font-semibold text-sm tracking-wide flex items-center"
+                    className="px-2 py-1 text-foreground hover:text-gold transition-colors duration-300 font-black text-sm tracking-wide flex items-center"
+                    style={{ fontFamily: "'Lato', sans-serif", fontWeight: 900 }}
                     onMouseEnter={() => item.submenus && handleMouseEnter(item.label)}
                     onMouseLeave={handleMouseLeave}
                   >
@@ -332,7 +348,8 @@ const Navigation = () => {
             <Link
               to="/"
               onClick={handleHomeClick}
-              className="text-foreground hover:text-gold transition-colors duration-300 font-semibold text-sm"
+              className="text-foreground hover:text-gold transition-colors duration-300 font-black text-sm"
+              style={{ fontFamily: "'Lato', sans-serif", fontWeight: 900 }}
             >
               HOME
             </Link>
@@ -349,7 +366,8 @@ const Navigation = () => {
                     setExpandedMenus(new Set());
                   }
                 }}
-                className="text-foreground hover:text-gold transition-colors duration-300 font-semibold text-sm"
+                className="text-foreground hover:text-gold transition-colors duration-300 font-black text-sm"
+                style={{ fontFamily: "'Lato', sans-serif", fontWeight: 900 }}
               >
                 MENU
               </button>
@@ -374,7 +392,8 @@ const Navigation = () => {
                         <>
                           <button
                             onClick={() => toggleMobileMenu(item.label)}
-                            className="w-full flex items-center justify-between px-4 py-2 text-foreground hover:text-gold transition-colors font-semibold text-sm"
+                            className="w-full flex items-center justify-between px-4 py-2 text-foreground hover:text-gold transition-colors font-black text-sm"
+                            style={{ fontFamily: "'Lato', sans-serif", fontWeight: 900 }}
                           >
                             <span>{item.label}</span>
                             <ChevronDown 
@@ -441,7 +460,8 @@ const Navigation = () => {
                 {item.href ? (
                   <Link
                     to={item.href}
-                    className="block py-3 text-foreground hover:text-gold transition-colors font-semibold"
+                    className="block py-3 text-foreground hover:text-gold transition-colors font-black"
+                    style={{ fontFamily: "'Lato', sans-serif", fontWeight: 900 }}
                     onClick={(e) => {
                       if (item.href === "/") {
                         handleHomeClick(e);
@@ -456,7 +476,8 @@ const Navigation = () => {
                   <div>
                     <button
                       onClick={() => toggleMobileMenu(item.label)}
-                      className="w-full flex items-center justify-between py-3 text-foreground hover:text-gold transition-colors font-semibold"
+                      className="w-full flex items-center justify-between py-3 text-foreground hover:text-gold transition-colors font-black"
+                      style={{ fontFamily: "'Lato', sans-serif", fontWeight: 900 }}
                     >
                       <span>{item.label}</span>
                       <ChevronDown 

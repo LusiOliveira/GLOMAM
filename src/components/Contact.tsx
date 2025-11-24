@@ -111,7 +111,7 @@ const Contact = () => {
             </div>
 
             {/* Right Column - Google Maps */}
-            <div className="w-full h-[280px] md:h-[320px] rounded-lg overflow-hidden border border-gold/30 shadow-lg">
+            <div className="w-full h-[280px] md:h-[320px] rounded-2xl overflow-hidden border border-gold/30 shadow-lg">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.103695941148!2d-60.01664262413901!3d-3.066950496908758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x926c1a7d57266697%3A0xc4189421d95b3b03!2sGrande%20Loja%20Ma%C3%A7%C3%B4nica%20do%20Amazonas%20Glomam!5e0!3m2!1spt-BR!2sbr!4v1763153246101!5m2!1spt-BR!2sbr"
                 width="100%"

@@ -1,8 +1,8 @@
 const Footer = () => {
   return (
     <footer 
-      className="bg-charcoal border-t border-gold/20 pt-12 pb-0 transition-all duration-500 ease-in-out" 
-      style={{ fontFamily: "'Lato', sans-serif" }}
+      className="border-t border-white/20 pt-12 pb-0 transition-all duration-500 ease-in-out font-black" 
+      style={{ fontFamily: "'Lato', sans-serif", backgroundColor: '#123b61', fontWeight: 900 }}
     >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
@@ -17,11 +17,11 @@ const Footer = () => {
                 className="w-auto object-contain transition-transform duration-300 hover:scale-125 cursor-pointer"
                 style={{ height: '50px' }}
               />
-              <span className="text-gold font-bold text-lg">
+              <span className="font-bold text-lg" style={{ color: '#e3da98' }}>
                 Grande Loja Maçônica do Amazonas
               </span>
             </div>
-            <p className="text-foreground/70 text-sm leading-relaxed">
+            <p className="text-white text-sm leading-relaxed">
               Uma tradição de séculos dedicada aos princípios de liberdade,
               igualdade e fraternidade.
             </p>
@@ -29,7 +29,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-gold font-bold mb-4">Links Rápidos</h4>
+            <h4 className="font-bold mb-4" style={{ color: '#e3da98' }}>Links Rápidos</h4>
             <ul className="space-y-2">
               {["HOME", "NOSSA HISTORIA", "MAÇONARIA", "GOVERNANTES", "LOJAS", "DISPENSÁRIO"].map((link) => {
                 const href = link === "NOSSA HISTORIA" 
@@ -41,7 +41,7 @@ const Footer = () => {
                   <li key={link}>
                     <a
                       href={href}
-                      className="text-foreground/70 hover:text-gold transition-colors text-sm"
+                      className="text-white hover:text-white/80 transition-colors text-sm"
                     >
                       {link}
                     </a>
@@ -53,18 +53,26 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-gold font-bold mb-4">Contato</h4>
-            <ul className="space-y-2 text-sm text-foreground/70">
+            <h4 className="font-bold mb-4" style={{ color: '#e3da98' }}>Contato</h4>
+            <ul className="space-y-2 text-sm text-white">
               <li>Telefone: (92) 3622-0034</li>
-              <li>Email: glomam@glomam.org.br</li>
-              <li>Segunda a Sexta: 14h às 20h</li>
+              <li>E-mail: glomam@glomam.org.br</li>
+              <li>Expediente: De segunda a sexta das 14h às 20h.</li>
+              <li>
+                <a 
+                  href="/glomam/quero-ser-um-macom" 
+                  className="hover:text-white/80 transition-colors"
+                >
+                  Declaração de interesse
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gold/20 pt-6 pb-6 text-center" style={{ marginBottom: 0 }}>
-          <p className="text-foreground/60 text-sm">
+        <div className="border-t border-white/20 pt-6 pb-6 text-center" style={{ marginBottom: 0 }}>
+          <p className="text-white/60 text-sm">
               GLOMAM © {new Date().getFullYear()}. Todos os direitos
             reservados.
           </p>
