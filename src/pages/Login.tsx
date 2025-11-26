@@ -30,7 +30,7 @@ const Login = () => {
 
           {/* Login Card */}
           <div className="w-full max-w-md px-6 py-8">
-            <div className="bg-charcoal-light/90 backdrop-blur-sm border border-gold/30 rounded-lg shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] p-8">
+            <div className="bg-blue/90 backdrop-blur-sm border border-gold/30 rounded-lg shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] p-8">
           {/* Logo and Title */}
           <div className="text-center mb-8">
             <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
@@ -45,14 +45,22 @@ const Login = () => {
               />
             </div>
             <h1 
-              className="text-3xl font-bold text-gold mb-2"
-              style={{ fontFamily: "'Cinzel Decorative', serif" }}
+              className="text-3xl font-bold mb-2 uppercase"
+              style={{ 
+                fontFamily: "'Baskerville Old Face', serif",
+                fontWeight: 'normal',
+                background: 'linear-gradient(to right, #e3da98, #d3a54c)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              
+              }}
             >
               GLOMAM
             </h1>
             <p 
               className="text-foreground/70 text-sm"
-              style={{ fontFamily: "'Cinzel', serif" }}
+              style={{ fontFamily: "'Baskerville Old Face', serif" }}
             >
               Portal do Membro
             </p>
