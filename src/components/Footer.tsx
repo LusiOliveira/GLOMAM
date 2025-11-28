@@ -1,8 +1,15 @@
 const Footer = () => {
   return (
     <footer 
-      className="border-t border-white/20 pt-12 pb-0 transition-all duration-500 ease-in-out font-black" 
-      style={{ fontFamily: "'Lato', sans-serif", backgroundColor: '#123b61', fontWeight: 900 }}
+      className="border-t border-white/20 pt-12 pb-0 transition-all duration-500 ease-in-out" 
+      style={{ 
+        fontFamily: "'Lato', sans-serif", 
+        backgroundColor: '#123b61', 
+        fontWeight: 400,
+        textRendering: 'optimizeLegibility',
+        WebkitFontSmoothing: 'antialiased',
+        MozOsxFontSmoothing: 'grayscale'
+      }}
     >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
@@ -17,11 +24,11 @@ const Footer = () => {
                 className="w-auto object-contain transition-transform duration-300 hover:scale-125 cursor-pointer"
                 style={{ height: '50px' }}
               />
-              <span className="font-bold text-lg" style={{ color: '#e3da98' }}>
+              <span className="font-bold text-lg" style={{ color: '#e3da98', fontFamily: "'Lato', sans-serif" }}>
                 Grande Loja Maçônica do Amazonas
               </span>
             </div>
-            <p className="text-white text-sm leading-relaxed">
+            <p className="text-white text-sm leading-relaxed" style={{ fontFamily: "'Lato', sans-serif" }}>
               Uma tradição de séculos dedicada aos princípios de liberdade,
               igualdade e fraternidade.
             </p>
@@ -29,21 +36,29 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold mb-4" style={{ color: '#e3da98' }}>Links Rápidos</h4>
+            <h4 className="font-bold mb-4" style={{ color: '#e3da98', fontFamily: "'Lato', sans-serif" }}>Links Rápidos</h4>
             <ul className="space-y-2">
-              {["HOME", "NOSSA HISTORIA", "MAÇONARIA", "GOVERNANTES", "LOJAS", "DISPENSÁRIO"].map((link) => {
-                const href = link === "NOSSA HISTORIA" 
-                  ? "/glomam/nossa-historia"
-                  : link === "GOVERNANTES"
+              {[
+                { label: "Home", key: "HOME" },
+                { label: "Maçonaria", key: "MAÇONARIA" },
+                { label: "Governantes", key: "GOVERNANTES" },
+                { label: "Lojas", key: "LOJAS" }
+              ].map(({ label, key }) => {
+                const href = key === "HOME"
+                  ? "/"
+                  : key === "GOVERNANTES"
                   ? "/administracao/governantes"
-                  : `#${link.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`;
+                  : key === "LOJAS"
+                  ? "/lojas"
+                  : `#${key.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`;
                 return (
-                  <li key={link}>
+                  <li key={key}>
                     <a
                       href={href}
                       className="text-white hover:text-white/80 transition-colors text-sm"
+                      style={{ fontFamily: "'Lato', sans-serif" }}
                     >
-                      {link}
+                      {label}
                     </a>
                   </li>
                 );
@@ -53,8 +68,8 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-bold mb-4" style={{ color: '#e3da98' }}>Contato</h4>
-            <ul className="space-y-2 text-sm text-white">
+            <h4 className="font-bold mb-4" style={{ color: '#e3da98', fontFamily: "'Lato', sans-serif" }}>Contato</h4>
+            <ul className="space-y-2 text-sm text-white" style={{ fontFamily: "'Lato', sans-serif" }}>
               <li>Telefone: (92) 3622-0034</li>
               <li>E-mail: glomam@glomam.org.br</li>
               <li>Expediente: De segunda a sexta das 14h às 20h.</li>
@@ -62,6 +77,7 @@ const Footer = () => {
                 <a 
                   href="/glomam/quero-ser-um-macom" 
                   className="hover:text-white/80 transition-colors"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
                 >
                   Declaração de interesse
                 </a>
@@ -72,7 +88,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-white/20 pt-6 pb-6 text-center" style={{ marginBottom: 0 }}>
-          <p className="text-white/60 text-sm">
+          <p className="text-white/60 text-sm" style={{ fontFamily: "'Lato', sans-serif" }}>
               GLOMAM © {new Date().getFullYear()}. Todos os direitos
             reservados.
           </p>

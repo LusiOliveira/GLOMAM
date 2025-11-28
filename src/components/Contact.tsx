@@ -71,39 +71,44 @@ const Contact = () => {
             {/* Left Column - Contact Info */}
             <div className="space-y-6">
               <h3 
-                className="text-3xl md:text-4xl font-bold text-gold mb-6 leading-tight"
-                style={{ fontFamily: "'Merriweather', serif" }}
+                className="text-3xl md:text-4xl font-normal mb-6 leading-tight uppercase"
+                style={{ 
+                  fontFamily: "'Baskerville Old Face', serif",
+                  background: 'linear-gradient(to right, #e3da98, #d3a54c)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
               >
                 GRANDE LOJA MAÇÔNICA<br />
                 DO AMAZONAS - GLOMAM
               </h3>
               
-              <div className="space-y-4" style={{ fontFamily: "'Lato', sans-serif" }}>
-                <div className="flex items-start space-x-4">
-                  <MapPin className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
-                  <p className="text-foreground/90 text-sm leading-relaxed">
-                    Av. Prof. Nilton Lins, 1655 - Flores, Manaus - AM, 69058-030<br />
-                    Brasil
+              <div className="space-y-4" style={{ fontFamily: "'Lato', sans-serif", fontWeight: 900 }}>
+                <div className="flex items-center space-x-4">
+                  <MapPin className="w-5 h-5 text-white flex-shrink-0" />
+                  <p className="text-white text-sm leading-relaxed font-black">
+                    Av. Prof. Nilton Lins, 1655 - Flores, Manaus - AM, 69058-030
                   </p>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <Phone className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
-                  <p className="text-foreground/90 text-sm">
+                <div className="flex items-center space-x-4">
+                  <Phone className="w-5 h-5 text-white flex-shrink-0" />
+                  <p className="text-white text-sm font-black">
                     (92) 3622-0034
                   </p>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <Mail className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
-                  <p className="text-foreground/90 text-sm">
+                <div className="flex items-center space-x-4">
+                  <Mail className="w-5 h-5 text-white flex-shrink-0" />
+                  <p className="text-white text-sm font-black">
                     glomam@glomam.org.br
                   </p>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <Clock className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
-                  <p className="text-foreground/90 text-sm">
+                <div className="flex items-center space-x-4">
+                  <Clock className="w-5 h-5 text-white flex-shrink-0" />
+                  <p className="text-white text-sm font-black">
                     Funcionamento: De Segunda a Sexta-feira. Das 14h às 20h
                   </p>
                 </div>

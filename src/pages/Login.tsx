@@ -53,7 +53,6 @@ const Login = () => {
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text'
-              
               }}
             >
               GLOMAM

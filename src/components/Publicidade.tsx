@@ -245,7 +245,7 @@ const Publicidade = () => {
             href="https://www.instagram.com/glomam_oficial/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gold to-gold-light text-charcoal font-black hover:shadow-[0_0_20px_rgba(212,175,55,0.6)] transition-all duration-300 hover:scale-105 active:scale-95 rounded-lg"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gold to-gold-light text-black font-black hover:shadow-[0_0_20px_rgba(212,175,55,0.6)] transition-all duration-300 hover:scale-105 active:scale-95 rounded-lg"
             style={{ fontFamily: "'Lato', sans-serif" }}
           >
             <Instagram className="w-5 h-5" />
