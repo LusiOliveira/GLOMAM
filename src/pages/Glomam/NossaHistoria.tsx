@@ -138,9 +138,13 @@ const NossaHistoria = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <h1 
-              className="text-4xl md:text-5xl font-bold text-gold mb-4"
+              className="text-4xl md:text-5xl font-normal uppercase mb-4"
               style={{
-                fontFamily: "'Cinzel Decorative', serif",
+                fontFamily: "'Baskerville Old Face', serif",
+                background: 'linear-gradient(to right, #e3da98, #d3a54c)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
                 opacity: isTitleVisible ? 1 : 0,
                 transform: isTitleVisible ? 'translateY(0)' : 'translateY(30px)',
                 transition: 'opacity 0.6s ease-out, transform 0.6s ease-out'

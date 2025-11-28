@@ -81,8 +81,8 @@ const App = () => (
             {/* DISPENSÁRIO Routes */}
             <Route path="/dispensario/quem-somos" element={<QuemSomos />} />
             
-            {/* AUTH Routes */}
-            <Route path="/login" element={<Login />} />
+            {/* AUTH Routes - Login desativado temporariamente */}
+            {/* <Route path="/login" element={<Login />} /> */}
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

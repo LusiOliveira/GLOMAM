@@ -21,10 +21,6 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/90 via-charcoal/80 to-charcoal/95" />
       </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 border border-gold/20 rotate-45 hidden lg:block" />
-      <div className="absolute bottom-20 right-10 w-40 h-40 border border-gold/20 rotate-12 hidden lg:block" />
-
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div
@@ -33,7 +29,7 @@ const Hero = () => {
           }`}
         >
           <div className="inline-block mb-6">
-            <div className="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+            <div className="w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 mx-auto mb-4 flex items-center justify-center">
               <img 
                 src="/images/icons/Hero.png" 
                 alt="Grande Loja Maçônica"
@@ -79,7 +75,7 @@ const Hero = () => {
           <span className="text-2xl leading-tight font-black">GLOMAM</span>
         </a>
         <a
-          href="/login"
+          href="/intranet"
           className="px-6 py-3 h-[56px] border-2 font-black hover:bg-gold hover:text-charcoal transition-all duration-300 flex items-center justify-center uppercase text-2xl whitespace-nowrap"
           style={{ fontFamily: "'Lato', sans-serif", fontWeight: 900, color: '#e3da98', borderColor: '#e3da98', borderRadius: '12px' }}
         >
