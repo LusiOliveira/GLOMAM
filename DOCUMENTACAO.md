@@ -319,7 +319,7 @@ O site utiliza **React Router DOM** para navegação SPA. Todas as rotas estão 
 
 1. **Clone o repositório**
    ```bash
-   git clone https://github.com/LusiOliveira/GLOMAM.git
+   git clone <URL_DO_REPOSITORIO>
    cd GLOMAM
    ```
 
@@ -547,7 +547,7 @@ O projeto utiliza o sistema de espaçamento do Tailwind:
 #### GitHub Pages
 1. Configure o workflow do GitHub Actions
 2. Build e deploy automático na branch `main`
-3. Acesse via `https://username.github.io/GLOMAM`
+3. Acesse via `https://<seu-usuario>.github.io/GLOMAM`
 
 #### Servidor Próprio
 1. Faça upload dos arquivos da pasta `dist/`
@@ -675,16 +675,6 @@ A página "O que é" possui scrollbar dourada personalizada:
 - **React Hook Form**: Formulários (preparado para validação)
 - **Zod**: Validação de schemas (preparado para formulários)
 
----
-
-## 📞 Suporte e Contato
-
-Para dúvidas sobre o desenvolvimento ou manutenção do site:
-
-- **Repositório**: https://github.com/LusiOliveira/GLOMAM
-- **Issues**: Use o sistema de issues do GitHub para reportar bugs ou sugerir melhorias
-
----
 
 ## 📅 Changelog
 
