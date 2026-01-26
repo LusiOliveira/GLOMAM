@@ -25,22 +25,12 @@ Site institucional da **Grande Loja Maçônica do Amazonas (GLOMAM)**, desenvolv
 ### Características Principais
 
 - ✅ Design elegante e moderno com tema escuro e detalhes dourados
-- ✅ Totalmente responsivo (mobile-first)
+- ✅ Totalmente responsivo
 - ✅ Navegação suave entre seções com sistema de rotas
 - ✅ Animações e transições suaves
-- ✅ SEO otimizado com meta tags apropriadas
 - ✅ Sistema de dropdowns hover inteligente
-- ✅ Menu mobile com hambúrguer
+- ✅ Menu mobile
 - ✅ Header translúcido ao rolar a página
-
-### Informações de Contato
-
-- **Telefone**: (92) 3622-0034
-- **E-mail**: glomam@glomam.org.br
-- **Endereço**: Av. Prof. Nilton Lins, 1655 - Flores, Manaus - AM, 69058-030
-- **Horário**: Segunda a Sexta, 14h às 20h
-
----
 
 ## 🛠 Tecnologias Utilizadas
 
